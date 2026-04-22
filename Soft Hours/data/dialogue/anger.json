@@ -1,0 +1,1246 @@
+{
+  "illness": "anger_issues",
+  "unique_stat": "control",
+  "dialogues": [
+    {
+      "id": 1,
+      "patient_says": "I snapped at my coworker today over something small. I don't even remember what it was about. I just exploded.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "What do you think was really bothering you before it happened?",
+          "stats": {"trust": 3, "control": 2, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Did you apologize to your coworker after?",
+          "stats": {"trust": 1, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That kind of reaction can damage your relationships at work.",
+          "stats": {"trust": -2, "control": -1, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Explosions like that usually mean something else is going on underneath.",
+          "stats": {"trust": 2, "control": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "patient_says": "People always say I have anger issues but I think they just provoke me and then act surprised.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "It can feel that way. What kinds of things tend to provoke you?",
+          "stats": {"trust": 2, "control": 1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Sometimes both things are true. People provoke and we still choose how to respond.",
+          "stats": {"control": 2, "trust": 2, "clarity": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're right, some people are just difficult.",
+          "stats": {"trust": -1, "control": -2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "Have you considered that the pattern might involve you too?",
+          "stats": {"trust": -1, "control": 1, "clarity": 2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "patient_says": "I punched a wall last week. My hand still hurts. I just couldn't hold it in.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That must have been an intense moment. What led up to it?",
+          "stats": {"trust": 3, "control": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you okay? Physically I mean.",
+          "stats": {"trust": 2, "calm": 1},
+          "patient_emotion_after": "shock",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Hitting things is never the answer.",
+          "stats": {"trust": -3, "control": -1, "loneliness": 2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "When anger has nowhere to go it looks for any exit. Let's talk about what was happening.",
+          "stats": {"trust": 3, "control": 2, "calm": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "patient_says": "I don't like talking about this. I feel like you're just going to judge me.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "I'm not here to judge you. I'm here to understand.",
+          "stats": {"trust": 3, "calm": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's a fair concern. Has someone judged you for your anger before?",
+          "stats": {"trust": 3, "control": 1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "I'm a professional. Judging isn't my job.",
+          "stats": {"trust": 1, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "Well you are here so you might as well talk.",
+          "stats": {"trust": -3, "loneliness": 2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "patient_says": "My partner said they're scared of me sometimes. That really messed me up.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That must have been hard to hear. How did you react when they said it?",
+          "stats": {"trust": 3, "control": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The fact that it messed you up means you care. That matters.",
+          "stats": {"trust": 2, "hope": 2, "control": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "If your partner is scared of you, that's a serious problem.",
+          "stats": {"trust": -2, "loneliness": 2, "control": -1},
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Do you understand why they feel that way?",
+          "stats": {"control": 2, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "patient_says": "I get angry so fast. It's like zero to a hundred in two seconds and I can't stop it.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "That fast trigger is really common. Do you notice any warning signs before it happens?",
+          "stats": {"control": 3, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does it feel like in your body right before you explode?",
+          "stats": {"control": 2, "clarity": 2, "trust": 3},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to slow down before you react.",
+          "stats": {"trust": -2, "control": -1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Learning to catch that moment before zero is exactly what we can work on.",
+          "stats": {"hope": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "patient_says": "I yelled at my kid yesterday. They were just being loud and I completely lost it. I feel awful.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Feeling awful about it means you know it wasn't okay. What happened after?",
+          "stats": {"trust": 3, "control": 1, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Parenting is hard and losing your temper happens. What matters is what you do next.",
+          "stats": {"hope": 2, "trust": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Yelling at children can have lasting effects on them.",
+          "stats": {"trust": -3, "loneliness": 2, "control": -1},
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Did you apologize to them?",
+          "stats": {"trust": 1, "control": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "patient_says": "I don't think I actually have anger issues. I think I just have low tolerance for stupidity.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "What kinds of things do you label as stupid?",
+          "stats": {"clarity": 3, "trust": 2, "control": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "It can be both. Low tolerance and anger issues often go together.",
+          "stats": {"clarity": 2, "control": 2, "trust": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're probably right, some people really are frustrating.",
+          "stats": {"trust": -1, "control": -2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What made you come here if you don't think there's a problem?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "shock",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "patient_says": "I lost a job because I argued with my manager. I know I was right but I took it too far.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Being right and handling it well are two different things. How did it escalate?",
+          "stats": {"clarity": 3, "control": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "How do you feel about it now looking back?",
+          "stats": {"trust": 2, "clarity": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Standing up for yourself is important even if the timing was off.",
+          "stats": {"hope": 1, "trust": 1, "control": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "That's a costly lesson. What would you do differently?",
+          "stats": {"control": 3, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "patient_says": "Sometimes after I get angry I feel so tired. Like completely drained.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That crash after anger is real. Your body goes through a lot during those moments.",
+          "stats": {"trust": 3, "calm": 1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do you usually do during that tired phase?",
+          "stats": {"trust": 2, "clarity": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That drain is your body telling you it's not sustainable.",
+          "stats": {"clarity": 2, "trust": 1, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Maybe that's a sign you shouldn't get that angry in the first place.",
+          "stats": {"trust": -2, "control": -1, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "patient_says": "I grew up in a house where people yelled all the time. I thought that was just normal.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "When that's all you knew growing up it makes sense it became your default.",
+          "stats": {"trust": 3, "clarity": 2, "loneliness": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What made you start questioning whether it was normal?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "It wasn't normal. But you can unlearn it.",
+          "stats": {"hope": 2, "trust": 1, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "A lot of people come from households like that.",
+          "stats": {"calm": 1, "trust": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "patient_says": "I threw my phone once. Broke it completely. I bought a new one the next day and felt embarrassed.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "The embarrassment after is actually important. What were you feeling before you threw it?",
+          "stats": {"control": 3, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That kind of destruction can feel like relief in the moment. Did it?",
+          "stats": {"clarity": 2, "trust": 3, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Throwing things is dangerous. You could have hurt someone.",
+          "stats": {"trust": -2, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What do you wish you had done instead?",
+          "stats": {"control": 2, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "patient_says": "My friends say I'm fun to be around until I'm not. I don't know what that switch is.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That switch usually has a trigger. Have you noticed any patterns in when it flips?",
+          "stats": {"clarity": 3, "control": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Your friends saying that shows they care enough to be honest. Do you value that?",
+          "stats": {"trust": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Everyone has good and bad sides.",
+          "stats": {"trust": -1, "control": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What does it feel like right before the switch?",
+          "stats": {"clarity": 3, "control": 2, "trust": 3},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "patient_says": "I said some really cruel things to someone once. I meant them in the moment but not after.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Anger can pull words out of us that we don't actually believe. Did you ever address it with them?",
+          "stats": {"trust": 3, "control": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The fact that you didn't mean them after matters. What shifted for you?",
+          "stats": {"clarity": 2, "trust": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Words can cause damage even if you didn't mean them long term.",
+          "stats": {"trust": -1, "control": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "We all say things we regret.",
+          "stats": {"trust": -1, "control": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "patient_says": "I think people take advantage of me and then get upset when I finally react.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "Feeling taken advantage of builds up over time. Can you give me an example?",
+          "stats": {"trust": 2, "clarity": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Sometimes that feeling is accurate. But how you react still affects outcomes.",
+          "stats": {"clarity": 2, "control": 2, "trust": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're probably right. People can be selfish.",
+          "stats": {"trust": -1, "control": -2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "Have you tried setting boundaries before reaching that breaking point?",
+          "stats": {"control": 3, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "patient_says": "I don't think I'll ever change. I've been like this my whole life.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Being like this your whole life means it's familiar, not that it's permanent.",
+          "stats": {"hope": 3, "trust": 2, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What makes you feel like change isn't possible?",
+          "stats": {"clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "People change all the time. It just takes work.",
+          "stats": {"hope": 1, "trust": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're here. That already means something has shifted.",
+          "stats": {"hope": 3, "trust": 3, "motivation": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "patient_says": "I got into a fight with a stranger in traffic. I followed them for a bit. I'm not proud of that.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That kind of escalation is scary even for you to reflect on. What do you think you were actually feeling?",
+          "stats": {"clarity": 3, "trust": 3, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "shock"
+        },
+        {
+          "text": "Road rage can get very dangerous very fast. Was there a point where you caught yourself?",
+          "stats": {"control": 2, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Following someone is threatening behavior. Do you understand that?",
+          "stats": {"trust": -2, "control": 1, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm glad you can recognize you weren't proud of it. That self-awareness is important.",
+          "stats": {"hope": 2, "trust": 2, "control": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "patient_says": "I feel like no one actually listens to me unless I raise my voice.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "That's a really painful belief to carry. When did you start feeling unheard?",
+          "stats": {"trust": 3, "loneliness": -2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "If that's working short term it makes sense you keep doing it. But what's the cost?",
+          "stats": {"clarity": 3, "control": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "People will listen more when you're calm, not less.",
+          "stats": {"trust": -2, "control": -1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would it mean to you to be heard without having to fight for it?",
+          "stats": {"clarity": 2, "hope": 2, "trust": 3},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "patient_says": "I actually had a good week. I only got properly angry once and I walked away before it got bad.",
+      "emotion": "smile",
+      "choices": [
+        {
+          "text": "Walking away before it escalated is a huge deal. That's exactly the kind of control we're building.",
+          "stats": {"hope": 3, "control": 3, "motivation": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you decide to walk away that time?",
+          "stats": {"clarity": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Once is still once.",
+          "stats": {"hope": -2, "trust": -2, "control": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad to hear that.",
+          "stats": {"hope": 2, "trust": 2, "calm": 1},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "patient_says": "I hate that I'm here. This feels weak to me.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "A lot of people feel that way walking in. What made you come anyway?",
+          "stats": {"trust": 3, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Coming here when you hate it takes more strength than not coming.",
+          "stats": {"hope": 2, "trust": 2, "motivation": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Weakness has nothing to do with it.",
+          "stats": {"trust": 1, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "If you don't want to be here we don't have to do this.",
+          "stats": {"trust": -3, "loneliness": 2, "hope": -1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "patient_says": "I've pushed away a lot of people. I know it. I just don't know how to stop.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Knowing you've done it is the first real step. What pattern do you usually see?",
+          "stats": {"clarity": 2, "trust": 3, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Do you push people away before they can leave or after?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "shock",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "People who stay despite that are the ones worth keeping.",
+          "stats": {"hope": 2, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You might need to be the one who reaches back out.",
+          "stats": {"hope": 2, "control": 1, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "patient_says": "When I'm calm I can see exactly how irrational I was. But in the moment it feels completely justified.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That gap between in-the-moment and after is exactly where we can work. What would help you access that calm perspective earlier?",
+          "stats": {"control": 3, "clarity": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That awareness you have after the fact is really valuable. Most people don't have it.",
+          "stats": {"hope": 2, "trust": 2, "control": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "So you know you're irrational. Why not just stop?",
+          "stats": {"trust": -3, "control": -1, "loneliness": 2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Can you describe what justified feels like in the moment?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "patient_says": "I've started noticing when my jaw gets tight. I think that's a sign it's coming.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That's a real breakthrough. Physical awareness is one of the best early warning systems.",
+          "stats": {"hope": 3, "control": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What do you do when you notice it?",
+          "stats": {"control": 2, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. What else do you notice?",
+          "stats": {"control": 2, "clarity": 2, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Noticing is one thing. Acting on it is another.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "patient_says": "My anger feels like protection. Like if I stay angry no one can catch me off guard.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That makes a lot of sense. Anger can feel safer than vulnerability. Has something caught you off guard badly in the past?",
+          "stats": {"clarity": 3, "trust": 3, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What are you protecting yourself from specifically?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Anger as armor keeps people out but also keeps you locked in.",
+          "stats": {"clarity": 2, "trust": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's not a healthy way to live.",
+          "stats": {"trust": -2, "loneliness": 2},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "patient_says": "I don't know if I'm actually angry or just sad and it comes out wrong.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That's a really deep insight. Anger is often sadness that doesn't know how to show itself.",
+          "stats": {"clarity": 3, "trust": 3, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What are you sad about?",
+          "stats": {"clarity": 2, "trust": 3},
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Either way the behavior is the same.",
+          "stats": {"trust": -2, "clarity": -1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Does it matter which one it is?",
+          "stats": {"clarity": 1, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "patient_says": "I get angry when I feel ignored. Like completely invisible.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "Feeling invisible is one of the loneliest feelings. When do you feel it most?",
+          "stats": {"trust": 3, "loneliness": -2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Anger is at least visible. It makes sense you'd reach for it.",
+          "stats": {"clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Being ignored is frustrating but anger usually makes it worse.",
+          "stats": {"clarity": 1, "trust": -1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would you want people to do differently when you're feeling that way?",
+          "stats": {"clarity": 3, "trust": 2, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "patient_says": "I apologized to my partner for the first time in a long time. It felt strange but they cried.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That took something real to do. How did it feel for you?",
+          "stats": {"trust": 3, "hope": 2, "control": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Their tears probably showed how much it meant. Does that land for you?",
+          "stats": {"clarity": 2, "hope": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. You should do that more.",
+          "stats": {"trust": -1, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made this time different from before?",
+          "stats": {"clarity": 3, "control": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "patient_says": "I feel like people are always testing me. Waiting to see me snap.",
+      "emotion": "angry",
+      "choices": [
+        {
+          "text": "That feeling of being watched and tested sounds exhausting. Is that in specific relationships or everywhere?",
+          "stats": {"trust": 2, "clarity": 2, "exhaustion": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Sometimes when we expect to snap people sense it and act accordingly.",
+          "stats": {"clarity": 3, "control": 2, "trust": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "People probably aren't thinking about you that much.",
+          "stats": {"trust": -2, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would it feel like if they weren't testing you?",
+          "stats": {"clarity": 2, "hope": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "patient_says": "I broke up with someone because they said I scared them. I didn't even realize I was being scary.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That must have been really confusing and painful. What were you doing when they said it?",
+          "stats": {"trust": 3, "clarity": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Not realizing the impact of your actions is part of what makes it hard to change. Does this happen often?",
+          "stats": {"clarity": 3, "control": 1, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should have asked them what you were doing.",
+          "stats": {"trust": -1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How do you feel about them now?",
+          "stats": {"trust": 2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "patient_says": "I've started going for walks when I feel it building. It actually helps a bit.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That's a really healthy redirect. Movement gives the anger somewhere to go that isn't at someone.",
+          "stats": {"hope": 3, "control": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does a walk do for you mentally during those moments?",
+          "stats": {"clarity": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's a good start.",
+          "stats": {"hope": 1, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What happens when you can't walk away?",
+          "stats": {"clarity": 2, "control": 2, "trust": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "patient_says": "I sometimes think everyone would be better off if I just stayed alone.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That thought carries a lot of pain. Can you tell me more about what's underneath it?",
+          "stats": {"trust": 4, "loneliness": -2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Isolation might feel like protecting others but it ends up hurting you.",
+          "stats": {"clarity": 2, "trust": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Maybe some space could help.",
+          "stats": {"trust": -2, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Do you feel safe right now?",
+          "stats": {"trust": 3, "calm": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "patient_says": "I've started counting to ten when I feel it coming. I know it sounds stupid but it works sometimes.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "It doesn't sound stupid at all. It's buying your brain time to catch up with your body.",
+          "stats": {"hope": 2, "control": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What happens on the days it doesn't work?",
+          "stats": {"clarity": 2, "control": 1, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "It doesn't sound stupid. How long have you been doing it?",
+          "stats": {"trust": 2, "control": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Ten seconds isn't very long.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "patient_says": "I feel like I scare myself sometimes. I don't like who I become.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That honesty takes real courage. The version of you sitting here right now isn't that person.",
+          "stats": {"hope": 3, "trust": 3, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does that person feel like when they take over?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "If you're scared of yourself that's a sign you need to take this seriously.",
+          "stats": {"trust": -1, "control": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That fear is actually part of what makes change possible.",
+          "stats": {"hope": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "patient_says": "I got through a whole argument without raising my voice. We actually solved something.",
+      "emotion": "smile",
+      "choices": [
+        {
+          "text": "That is genuinely huge. What was different about how you handled it?",
+          "stats": {"hope": 3, "control": 3, "motivation": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really proud of you for that.",
+          "stats": {"hope": 2, "trust": 2, "control": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "See what happens when you stay calm.",
+          "stats": {"trust": -1, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What did it feel like to get through it that way?",
+          "stats": {"clarity": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "patient_says": "I feel like I'm getting better but then something small sets me off and I think I haven't changed at all.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Progress isn't a straight line. One setback doesn't erase everything you've built.",
+          "stats": {"hope": 3, "trust": 2, "control": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What was the small thing that set you off?",
+          "stats": {"clarity": 2, "control": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Change takes time. Don't give up.",
+          "stats": {"hope": 1, "trust": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How quickly did you recover from it this time versus before?",
+          "stats": {"clarity": 3, "hope": 2, "control": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "patient_says": "I've never told anyone half the stuff I've said here. That's weird to think about.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "It takes trust to say things out loud for the first time. I don't take that lightly.",
+          "stats": {"trust": 4, "loneliness": -2, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How does it feel having said it?",
+          "stats": {"clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's what this space is for.",
+          "stats": {"trust": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You should try sharing more with people in your life too.",
+          "stats": {"trust": -1, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "patient_says": "I think underneath all the anger I'm just really tired.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That tiredness makes complete sense. Anger is exhausting to carry every day.",
+          "stats": {"trust": 3, "calm": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Tired of what specifically?",
+          "stats": {"clarity": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Rest more then.",
+          "stats": {"trust": -2, "loneliness": 1},
+          "patient_emotion_after": "angry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would it feel like to put it down for a while?",
+          "stats": {"hope": 2, "calm": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "patient_says": "I smiled at a stranger today. I don't usually do that.",
+      "emotion": "smile",
+      "choices": [
+        {
+          "text": "That's a small thing that says something big about where you're at.",
+          "stats": {"hope": 2, "trust": 2, "motivation": 1},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you do it?",
+          "stats": {"clarity": 1, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's nice. How did it feel?",
+          "stats": {"hope": 1, "trust": 2, "calm": 1},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Smiling at strangers isn't really a measure of progress.",
+          "stats": {"trust": -2, "hope": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "patient_says": "I still have a long way to go. But I think I actually want to get there now.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Wanting it is everything. That shift is the whole foundation.",
+          "stats": {"hope": 3, "motivation": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does getting there look like to you?",
+          "stats": {"clarity": 2, "hope": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's good. Keep at it.",
+          "stats": {"hope": 1, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You've already come a long way. Further than you think.",
+          "stats": {"hope": 3, "trust": 3, "motivation": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "patient_says": "Do you think someone like me can actually change?",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Yes. And I don't say that to be encouraging. I say it because I've seen it and because you're already doing it.",
+          "stats": {"hope": 4, "trust": 3, "motivation": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What makes you doubt it?",
+          "stats": {"clarity": 2, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Change is possible for anyone who genuinely wants it.",
+          "stats": {"hope": 2, "trust": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That depends entirely on you.",
+          "stats": {"hope": -1, "trust": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    }
+  ]
+}

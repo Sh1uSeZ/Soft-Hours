@@ -1,0 +1,80 @@
+{
+  "first_names": {
+    "thai": [
+      "Fah", "Nong", "Pim", "Mint", "Fon",
+      "Ploy", "Aom", "Nan", "Ing", "Joy",
+      "Bua", "Wan", "Nui", "Kwan", "Pam",
+      "Earn", "June", "Praew", "Warisa", "Nitchaya"
+    ],
+    "japanese": [
+      "Hana", "Yuki", "Saki", "Mio", "Rin",
+      "Aoi", "Nana", "Yuna", "Mei", "Riko",
+      "Sora", "Hina", "Kana", "Yui", "Noa",
+      "Miku", "Aya", "Shiori", "Haruka", "Kotone"
+    ],
+    "english": [
+      "Emma", "Lily", "Nora", "Claire", "Sara",
+      "Jade", "Mia", "Ellie", "Grace", "Ruby",
+      "Zoe", "Lucy", "Anna", "Kate", "Maya",
+      "Iris", "Chloe", "Leah", "Nina", "Diana"
+    ]
+  },
+  "last_names": {
+    "thai": [
+      "Srisuk", "Jaidee", "Phromma", "Charoenwong", "Boonmee",
+      "Thongchai", "Rattana", "Saengdao", "Khampha", "Worawan"
+    ],
+    "japanese": [
+      "Tanaka", "Yamamoto", "Sato", "Nakamura", "Ito",
+      "Kobayashi", "Watanabe", "Yoshida", "Matsumoto", "Fujiwara"
+    ],
+    "english": [
+      "Hayes", "Mercer", "Collins", "Bennett", "Ellis",
+      "Lawson", "Reid", "Porter", "Nash", "Fleming"
+    ]
+  },
+  "age_range": {
+    "min": 19,
+    "max": 45
+  },
+  "occupations": [
+    "College Student",
+    "Office Worker"
+  ],
+  "backgrounds": {
+    "college_student": [
+      "First year struggling to keep up with expectations.",
+      "Moved away from home for the first time this semester.",
+      "Balancing part-time work and a full course load.",
+      "Switched majors twice and still feels lost.",
+      "Lives alone in a small apartment near campus.",
+      "Top of her class but feels like she is always behind.",
+      "Came on a scholarship and is terrified of losing it.",
+      "Her family calls every day to check on her grades.",
+      "Studies late every night and skips meals often.",
+      "Has not told her parents she is struggling.",
+      "Transferred from another university last year.",
+      "Took a gap year before starting and still feels behind.",
+      "Her roommate moved out and she has been alone since.",
+      "Joined three clubs to feel less lonely but feels more stretched thin.",
+      "Dreams of dropping out but is too afraid to say it."
+    ],
+    "office_worker": [
+      "Has been at the same company for six years without a promotion.",
+      "Works remotely and has not seen colleagues in months.",
+      "Recently moved to a new city for this job.",
+      "Her manager changes her deadlines without warning.",
+      "Takes work calls during dinner most nights.",
+      "Has not used her vacation days in two years.",
+      "Was passed over for a promotion last quarter.",
+      "Started this job thinking it would be temporary.",
+      "Her team was restructured and she lost half her colleagues.",
+      "Works through lunch every day without thinking about it.",
+      "Is the only woman in her department.",
+      "Commutes two hours each way and is exhausted before the day starts.",
+      "Has been covering for a colleague on leave for three months.",
+      "Her contract is up for renewal and she does not know if they will keep her.",
+      "Sends emails at midnight and wonders why she cannot sleep."
+    ]
+  }
+}

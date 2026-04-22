@@ -1,0 +1,1246 @@
+{
+  "illness": "burnout",
+  "unique_stat": "energy",
+  "dialogues": [
+    {
+      "id": 1,
+      "patient_says": "I'm fine. I'm just tired. I've been tired for about two years.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Two years of tired is not just tired. What does your day usually look like?",
+          "stats": {"trust": 3, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Two years is a long time to push through. What keeps you going?",
+          "stats": {"trust": 2, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should take a vacation.",
+          "stats": {"trust": -3, "energy": -1, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Tired that lasts years is usually something more than tired. How did it start?",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "patient_says": "I used to care so much about my work. Now I feel nothing when I do it. Just going through the motions.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That shift from caring to nothing is one of the clearest signs of burnout. When did you notice it happening?",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What did caring about it feel like before?",
+          "stats": {"trust": 2, "clarity": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Maybe you just need a new challenge.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Going through the motions takes its own kind of toll. Are you managing okay day to day?",
+          "stats": {"trust": 2, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "patient_says": "I work twelve hour days and I still feel like I'm behind. It never ends.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Twelve hours and still behind sounds like an impossible standard. Who set it?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What would happen if you worked ten hours instead?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to learn to manage your time better.",
+          "stats": {"trust": -3, "energy": -2, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Behind according to who? You or someone else?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "patient_says": "I can't remember the last time I did something just for fun. Not productive. Just fun.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "When fun starts feeling foreign that's the body telling you something is seriously out of balance.",
+          "stats": {"trust": 3, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What used to be fun before everything became about productivity?",
+          "stats": {"trust": 2, "energy": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try to schedule some fun time into your week.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "When did productivity become the only thing that counted?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "patient_says": "People at work keep saying I seem checked out. I am. But I can't stop.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Checked out but can't stop is a really painful place to be stuck. What feels like it would happen if you did stop?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What's keeping you in it?",
+          "stats": {"trust": 2, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should talk to your manager about how you're feeling.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Showing up while completely empty takes more out of you than people realize.",
+          "stats": {"trust": 3, "energy": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "patient_says": "I get irritated so easily now. Small things that never bothered me feel unbearable.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "When the tank is empty there's no buffer left. Irritability is often one of the first visible signs of burnout.",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What's the kind of thing that sets you off lately?",
+          "stats": {"trust": 2, "clarity": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try to be more patient with yourself and others.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Small things feeling unbearable is the exhaustion talking. How long has the irritability been this bad?",
+          "stats": {"trust": 3, "clarity": 1, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "patient_says": "I don't sleep well but I'm also exhausted all the time. Neither thing makes sense.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "It actually makes complete sense with burnout. The nervous system gets so overloaded it can't downshift even when the body is desperate for it.",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does your sleep look like? Do you wake up a lot or just not fall asleep?",
+          "stats": {"trust": 2, "clarity": 1, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try cutting caffeine and sticking to a sleep schedule.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your body and mind are both running on fumes. How long has this pattern been going on?",
+          "stats": {"trust": 3, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "patient_says": "I feel guilty when I'm not working. Even on weekends. Even when I'm sick.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That guilt has become its own kind of pressure on top of everything else. Where did it come from?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do you think would happen if you rested without guilt?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to learn to switch off.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Resting while sick and feeling guilty about it is a sign the system is really out of balance.",
+          "stats": {"trust": 3, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "patient_says": "I said yes to three more things this week even though I have no room. I don't know why I do that.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Do you say yes to protect a relationship, avoid conflict, or because you genuinely think you can manage?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What would saying no feel like?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to start saying no.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Can you cancel any of them?",
+          "stats": {"trust": 2, "energy": 2, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "patient_says": "I used to be the most motivated person in my team. Now I can barely start anything.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That contrast between who you were and who you feel like now must be really hard to sit with.",
+          "stats": {"trust": 3, "energy": 1, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does barely starting feel like? Is it resistance or just emptiness?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Maybe you just need some fresh inspiration.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The motivation didn't leave because something's wrong with you. It left because the tank has been dry for too long.",
+          "stats": {"trust": 3, "hope": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "patient_says": "I feel like a machine. Wake up, work, sleep, repeat. No feeling. Just function.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "When life becomes pure function the human part gets starved. What was the last thing that made you feel something?",
+          "stats": {"trust": 3, "energy": 2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "How long has it felt like that?",
+          "stats": {"trust": 2, "clarity": 1, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try adding something enjoyable to your routine.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Machines break down when they're run without maintenance. So do people.",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "patient_says": "I snapped at a colleague for something tiny. I apologized but I could see they were uncomfortable.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "You caught it and apologized. That matters. How did you feel after?",
+          "stats": {"trust": 2, "energy": 1, "hope": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Is that happening more often lately?",
+          "stats": {"trust": 2, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You really need to manage your stress better at work.",
+          "stats": {"trust": -3, "energy": -2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That uncomfortableness from them on top of your own guilt sounds heavy.",
+          "stats": {"trust": 3, "energy": 1, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "patient_says": "I daydream about quitting constantly. I've never actually quit anything in my life.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "The daydream is telling you something even if acting on it isn't the right move yet. What does quitting feel like in the daydream?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What would you do if you did quit?",
+          "stats": {"clarity": 2, "trust": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Don't quit. You'll regret it.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The fact that quitting feels like relief rather than failure says something about where you are.",
+          "stats": {"clarity": 2, "trust": 3, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "patient_says": "I forgot to eat lunch three days in a row. I just didn't notice.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Not noticing hunger is a sign your body is running in a kind of override mode. How are you feeling physically?",
+          "stats": {"trust": 3, "energy": 1, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you eating enough outside of that?",
+          "stats": {"trust": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Set an alarm for lunch.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "When you stop hearing your own body's signals, that's the body hitting a limit.",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "patient_says": "My body aches all the time. My doctor said there's nothing wrong but it doesn't feel like nothing.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Burnout has very real physical symptoms. Your body isn't lying to you.",
+          "stats": {"trust": 3, "energy": 2, "clarity": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Where does it ache?",
+          "stats": {"trust": 2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "If the doctor says you're fine then you're probably fine.",
+          "stats": {"trust": -3, "energy": -2, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Chronic stress lives in the body. It doesn't always show up on tests.",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "patient_says": "I took a day off and spent it feeling guilty and checking my emails anyway.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "A day off that costs you the whole day in guilt isn't actually a day off. What made you check?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What would have happened if you hadn't checked?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should put your phone in another room on your days off.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The inability to disconnect is a symptom not a character flaw.",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "patient_says": "I used to be able to think clearly. Now everything feels foggy.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Cognitive fog is a very real burnout symptom. How long has it been hard to think clearly?",
+          "stats": {"trust": 3, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What kinds of things are hardest to think through right now?",
+          "stats": {"trust": 2, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try meditating. It helps with focus.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The fog isn't permanent. But it is a signal that something needs to change.",
+          "stats": {"hope": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "patient_says": "I feel like I've lost my identity outside of work. I don't know who I am if I'm not producing something.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "When did work become the whole of who you are? Was there a version of you before that?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Who were you before work took over?",
+          "stats": {"clarity": 2, "trust": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need hobbies outside of work.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your value doesn't come from what you produce. That's a hard thing to believe when productivity has been everything.",
+          "stats": {"trust": 3, "hope": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "patient_says": "I left work on time yesterday. I actually left on time. It felt wrong.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "The fact that leaving on time felt wrong tells you how warped normal has become. How was the rest of the evening?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's progress. What made today the day you left on time?",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Do it again tomorrow.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Leaving on time should feel normal. Let's work toward that.",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "patient_says": "I cried in the bathroom at work. Just for a minute. Then I went back to my desk.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Crying in the bathroom and then going back is holding so much in such a small space. How often does that happen?",
+          "stats": {"trust": 3, "energy": 1, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What brought it on?",
+          "stats": {"trust": 2, "clarity": 1, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "It happens. Work can be stressful.",
+          "stats": {"trust": -2, "energy": -1, "loneliness": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The minute you allowed yourself and then packed it back away. That's a hard thing to keep doing.",
+          "stats": {"trust": 3, "energy": 1, "loneliness": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "patient_says": "I feel resentful toward my job. I never used to feel that way.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Resentment usually builds when you've given too much for too long without enough back. What does the resentment feel like?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What changed between then and now?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Maybe it's time to find a new job.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Resentment is information. What is it telling you?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "patient_says": "I went for a walk this morning and felt almost human for a bit.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Almost human is a start. What was the walk like?",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That almost human feeling, what did it feel like exactly?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. You should walk every day.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your body remembered something this morning. That's worth paying attention to.",
+          "stats": {"hope": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "patient_says": "I set a boundary with my boss today. I said I couldn't take on the extra project.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That is genuinely difficult to do. How did they respond?",
+          "stats": {"hope": 3, "trust": 2, "energy": 3},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How did it feel to say no?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Be careful. You don't want to damage your reputation.",
+          "stats": {"trust": -3, "energy": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That took real courage. I'm proud of you.",
+          "stats": {"hope": 3, "trust": 3, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "patient_says": "I finished work at a reasonable time and read a book for an hour. I almost forgot I could do that.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "An hour of reading. Your brain had space to breathe. How did the rest of the evening feel?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What were you reading?",
+          "stats": {"trust": 2, "energy": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Keep doing that.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You didn't forget. You were just too depleted to reach it. It's still there.",
+          "stats": {"hope": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "patient_says": "I've been thinking about whether any of this is worth it anymore. The job. Everything.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "When everything starts to feel not worth it that's worth paying close attention to. What does everything feel like right now?",
+          "stats": {"trust": 4, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you okay? When you say everything, what do you mean?",
+          "stats": {"trust": 3, "clarity": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Of course it's worth it. You just need a break.",
+          "stats": {"trust": -3, "energy": -2, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I want to understand what you mean by everything. Can you tell me more?",
+          "stats": {"trust": 4, "clarity": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "patient_says": "I had a conversation with a friend that had nothing to do with work. It felt so strange and also really good.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Your brain got to exist outside of work mode for a bit. Strange and good is a really honest way to describe that.",
+          "stats": {"hope": 3, "energy": 2, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What did you talk about?",
+          "stats": {"trust": 2, "energy": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You should make time for friends more often.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The good part of that is real. Hold onto it.",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "patient_says": "I slept in on Saturday. Actually slept in. I didn't set an alarm.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Not setting an alarm and sleeping in is your body finally getting a small piece of what it needs. How did it feel?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you decide not to set one?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Sleeping in can mess up your sleep schedule.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm glad your body got that.",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "patient_says": "I'm starting to see that I've been doing this to myself as much as anything else has been doing it to me.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That's a really significant insight. What does it feel like to see that?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What specifically do you think you've been doing?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Yes. You need to take responsibility for your limits.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Seeing your own part in it is not the same as blaming yourself. It means you have more agency than you thought.",
+          "stats": {"hope": 3, "clarity": 2, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "patient_says": "I cooked a proper meal this week. Not just something fast. Something I actually wanted to eat.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Cooking something you actually wanted is a sign your sense of desire is waking back up.",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What did you make?",
+          "stats": {"trust": 2, "energy": 2, "calm": 1},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Eating well is important for energy.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's care for yourself. Real care. How did it feel?",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "patient_says": "I feel like I'm slowly coming back to life. It's very slow. But it's something.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Slow is exactly right. Burnout doesn't recover fast and that's okay. What does coming back feel like?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What's different compared to a month ago?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Don't rush it.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Something is everything right now. I'm really glad.",
+          "stats": {"hope": 3, "trust": 3, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "patient_says": "I said no to overtime this week. First time in over a year.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Over a year. That no cost you something to say. How did it feel?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What made this week the time to say it?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. Keep doing that.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That no was you choosing yourself. That's a big deal.",
+          "stats": {"hope": 3, "trust": 3, "energy": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "patient_says": "I noticed I was actually looking forward to something this week. A small thing. But I noticed.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Looking forward to something is your brain starting to imagine a future again. What was the thing?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Small things are where it starts. What was it?",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Build on that.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The noticing matters as much as the thing itself.",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "patient_says": "I think I've been scared to slow down because I'm afraid of what I'll feel if I do.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That fear is really common. Staying busy can be its own kind of armor. What do you think you'd feel?",
+          "stats": {"clarity": 3, "trust": 3, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do you imagine is underneath the busyness?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You won't know until you try.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Whatever's there has been waiting. It won't be as bad with support as it would be alone.",
+          "stats": {"trust": 3, "hope": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "patient_says": "I took a full weekend off. No work. Nothing. I didn't know what to do with myself at first.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Not knowing what to do with yourself is what happens when work has been everything. What did you end up doing?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "A full weekend. How did it feel by the end?",
+          "stats": {"trust": 2, "energy": 3, "hope": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You should do that every weekend.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That disorientation at first is the system recalibrating. It's a good sign.",
+          "stats": {"hope": 2, "clarity": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "patient_says": "I feel like myself again in small moments. Not all the time. But sometimes.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Sometimes is more than nothing. And small moments are where selves are rebuilt.",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does yourself feel like in those moments?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Keep working at it and it will come back fully.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad to hear that.",
+          "stats": {"hope": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "patient_says": "I actually enjoyed a piece of work this week. A small piece. But I noticed it.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "The caring coming back even in a small piece is significant. What was it?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Enjoyed how? Like it felt meaningful or like it was just engaging?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "See. It's not all bad.",
+          "stats": {"trust": -2, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your relationship with work doesn't have to be all or nothing. That one piece shows you something.",
+          "stats": {"hope": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "patient_says": "I think I've started to understand what I actually need. Not just what I'm supposed to do.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That distinction between what you need and what you're supposed to do is everything. What do you need?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What did you think you were supposed to do that you're questioning now?",
+          "stats": {"clarity": 3, "trust": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. Act on it.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That kind of clarity is hard to get to. I'm glad you're there.",
+          "stats": {"hope": 3, "trust": 3, "energy": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "patient_says": "I think rest is starting to feel like rest again instead of just time I should be using.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Rest feeling like rest is the whole thing. That shift took a long time.",
+          "stats": {"hope": 3, "energy": 4, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does rest feel like now compared to before?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. You needed that.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your relationship with yourself is healing. That's what we've been working toward.",
+          "stats": {"hope": 3, "trust": 3, "energy": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "patient_says": "I don't think I'll go back to how I was before. I don't want to.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Not wanting to go back is one of the most important things you could say. What will you do differently?",
+          "stats": {"hope": 3, "energy": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What was before that you don't want to return to?",
+          "stats": {"clarity": 2, "trust": 2, "energy": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. The old way wasn't sustainable.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's the most important shift of all. You have a new normal now.",
+          "stats": {"hope": 4, "trust": 3, "energy": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "patient_says": "I actually feel okay today. Not managing. Not surviving. Just okay.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Just okay after all of this is something worth sitting in for a moment.",
+          "stats": {"hope": 4, "energy": 4, "trust": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Okay without the managing and surviving. That's new. How does it feel?",
+          "stats": {"hope": 3, "trust": 3, "energy": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Keep it up.",
+          "stats": {"trust": -1, "energy": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad. You worked hard to get here.",
+          "stats": {"hope": 4, "trust": 4, "energy": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    }
+  ]
+}

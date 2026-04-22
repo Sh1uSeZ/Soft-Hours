@@ -1,0 +1,1795 @@
+{
+  "illness": "overthinking",
+  "unique_stat": "clarity",
+  "dialogues": [
+    {
+      "id": 1,
+      "patient_says": "I keep replaying a conversation I had yesterday. Did I say something wrong? I think I did. What if they hate me now?",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "I'm sure they don't hate you. You're just overthinking it.",
+          "stats": {
+            "hope": 1,
+            "calm": -1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That sounds exhausting. How long have you been thinking about this?",
+          "stats": {
+            "trust": 2,
+            "calm": 1,
+            "exhaustion": -1,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What specifically are you worried you said wrong?",
+          "stats": {
+            "trust": 3,
+            "clarity": 2,
+            "exhaustion": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Everyone overthinks sometimes. It will pass.",
+          "stats": {
+            "hope": 1,
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "patient_says": "I made a small mistake at work and now I can't stop thinking everyone noticed. They probably think I'm incompetent.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "One mistake doesn't define your competence.",
+          "stats": {
+            "hope": 2,
+            "calm": 1,
+            "trust": -1,
+            "clarity": 0
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What was the mistake? Walk me through it.",
+          "stats": {
+            "trust": 3,
+            "clarity": 2,
+            "exhaustion": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Do you have any evidence they noticed or is this a feeling?",
+          "stats": {
+            "clarity": 3,
+            "calm": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You should be more careful next time.",
+          "stats": {
+            "hope": -2,
+            "calm": -2,
+            "trust": -3,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "patient_says": "I spent three hours last night drafting one email. I kept rewriting it because it never felt right.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Three hours on one email does sound really draining.",
+          "stats": {
+            "trust": 2,
+            "calm": 1,
+            "exhaustion": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What were you afraid the email would come across as?",
+          "stats": {
+            "trust": 3,
+            "clarity": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Did you ever send it?",
+          "stats": {
+            "trust": 1,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Maybe just send it without overthinking.",
+          "stats": {
+            "trust": -2,
+            "calm": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "patient_says": "Sometimes I wonder if people only tolerate me. Like they don't actually want me around but they're too polite to say it.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "That sounds really lonely to carry around.",
+          "stats": {
+            "trust": 3,
+            "loneliness": -2,
+            "calm": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Has anyone ever given you a reason to feel that way?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "I'm sure your friends genuinely care about you.",
+          "stats": {
+            "hope": 1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Why would they tolerate you if they didn't want you around?",
+          "stats": {
+            "clarity": 1,
+            "trust": -2,
+            "calm": -1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "patient_says": "I cancelled plans with a friend because I was scared I'd say something awkward and ruin everything.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "What were you afraid you would say?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Avoiding situations can make the fear bigger over time.",
+          "stats": {
+            "clarity": 2,
+            "hope": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's okay, everyone needs alone time sometimes.",
+          "stats": {
+            "calm": 1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your friend probably didn't even notice.",
+          "stats": {
+            "hope": 1,
+            "trust": -2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "patient_says": "Do you ever feel like your brain just won't stop? Mine never does. Even when I try to sleep.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "A racing mind at night is really common with overthinking. Does it happen often?",
+          "stats": {
+            "trust": 2,
+            "calm": 1,
+            "exhaustion": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What kinds of thoughts keep you up?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Have you tried breathing exercises before bed?",
+          "stats": {
+            "hope": 1,
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You just need to learn to relax.",
+          "stats": {
+            "trust": -3,
+            "calm": -1,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "patient_says": "I rehearsed what I was going to say in this session the whole way here. I was scared I'd say something wrong.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That actually takes courage to admit. There's nothing wrong you could say here.",
+          "stats": {
+            "trust": 3,
+            "calm": 2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What were you worried about saying?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You don't need to prepare for this. Just talk.",
+          "stats": {
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You really don't need to overthink coming here.",
+          "stats": {
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "patient_says": "I read a message from my friend three times and I still can't figure out if they're mad at me.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "What does the message say?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Have you considered just asking them directly?",
+          "stats": {
+            "clarity": 3,
+            "hope": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "If they were mad they would tell you.",
+          "stats": {
+            "hope": 1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Sometimes a message is just a message.",
+          "stats": {
+            "calm": 1,
+            "trust": -2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "patient_says": "I feel stupid for worrying about things that probably don't matter. But I can't stop.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "You're not stupid. Your brain is working overtime and that's exhausting.",
+          "stats": {
+            "trust": 3,
+            "hope": 2,
+            "loneliness": -1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What makes you think they don't matter?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Worrying is just part of how your mind works.",
+          "stats": {
+            "calm": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're right, some things aren't worth worrying about.",
+          "stats": {
+            "hope": -2,
+            "trust": -2,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "patient_says": "I spent all morning thinking about whether I should change my order at a coffee shop. I ended up leaving without getting anything.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That sounds frustrating. Do small decisions often feel that difficult?",
+          "stats": {
+            "trust": 2,
+            "clarity": 1,
+            "exhaustion": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Decision fatigue is real. It happens when the brain is already overloaded.",
+          "stats": {
+            "hope": 1,
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just pick something next time, it doesn't have to be perfect.",
+          "stats": {
+            "trust": -2,
+            "calm": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "It's just coffee, you're making it bigger than it is.",
+          "stats": {
+            "trust": -3,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "patient_says": "I keep imagining worst case scenarios for things that haven't even happened yet.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That's called catastrophizing. Can you give me an example?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What's the worst case scenario you keep coming back to?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Try to focus on what's actually happening right now.",
+          "stats": {
+            "calm": 1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The worst case rarely actually happens.",
+          "stats": {
+            "hope": 1,
+            "trust": -2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "patient_says": "I apologize a lot even when I haven't done anything wrong. I just feel like I'm always in the way.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "You're not in the way here. Why do you feel like you are?",
+          "stats": {
+            "trust": 3,
+            "loneliness": -2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Over-apologizing often comes from anxiety. Do you notice when you do it?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Try to stop apologizing so much.",
+          "stats": {
+            "trust": -3,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "A lot of people feel that way sometimes.",
+          "stats": {
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "patient_says": "I don't know why but I keep checking if I locked the door even after I already checked twice.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That kind of checking behavior often comes from distrust of your own memory. Does it feel like relief when you check?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "How many times do you usually end up checking?",
+          "stats": {
+            "trust": 2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just trust yourself. You locked it.",
+          "stats": {
+            "calm": 1,
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Maybe put a sticky note on the door to remind yourself.",
+          "stats": {
+            "hope": 1,
+            "trust": 1,
+            "clarity": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "patient_says": "I had a good day yesterday but then spent the whole evening waiting for something bad to happen to cancel it out.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That sounds like you struggle to let good things just be good.",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Did something bad happen, or did the good day stay good?",
+          "stats": {
+            "clarity": 3,
+            "hope": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You deserve good days. They don't need to be balanced.",
+          "stats": {
+            "hope": 2,
+            "trust": 2,
+            "calm": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "That's a bit of a pessimistic way to live.",
+          "stats": {
+            "trust": -3,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "patient_says": "Sometimes I feel like I'm watching myself from outside my body and judging everything I do.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That detached feeling can be really disorienting. How long does it usually last?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does the voice say when it judges you?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Try to be kinder to yourself.",
+          "stats": {
+            "hope": 1,
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Everyone is their own harshest critic.",
+          "stats": {
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "patient_says": "I keep making lists to feel in control but then I feel guilty when I don't finish them.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Lists can be helpful but when they become pressure they do the opposite. Do your lists feel like pressure?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What happens when you don't finish one?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Maybe make shorter lists.",
+          "stats": {
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You don't have to finish everything on a list.",
+          "stats": {
+            "calm": 2,
+            "hope": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "patient_says": "I've been thinking about a fight I had with my mom three years ago and wondering if I should have said something different.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Three years is a long time to carry that. What keeps bringing it back?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Have you ever talked to her about it?",
+          "stats": {
+            "clarity": 2,
+            "hope": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "It was three years ago. Let it go.",
+          "stats": {
+            "trust": -3,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What do you wish you had said?",
+          "stats": {
+            "trust": 2,
+            "clarity": 3
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "patient_says": "I hate making phone calls. I rehearse what I'm going to say but then panic when someone actually picks up.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Phone anxiety is very common. What part of it feels the most scary?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What do you worry will happen if the call doesn't go the way you rehearsed?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just dial and see what happens.",
+          "stats": {
+            "trust": -2,
+            "calm": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Could you text instead when possible?",
+          "stats": {
+            "hope": 1,
+            "calm": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "patient_says": "I feel like I need to understand everything completely before I can do anything. So I end up doing nothing.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That's called analysis paralysis. Does it happen in a specific area of your life or everywhere?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What would happen if you started before you felt ready?",
+          "stats": {
+            "hope": 2,
+            "clarity": 2,
+            "trust": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Sometimes you just have to start.",
+          "stats": {
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Not understanding everything is okay. What's one small thing you could do today?",
+          "stats": {
+            "hope": 2,
+            "motivation": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "patient_says": "I keep thinking about things I said five years ago that were embarrassing. Random moments just hit me out of nowhere.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Those sudden memory flashes can feel really jarring. Do they come with a physical feeling too?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do you do when they hit?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Nobody remembers those things as well as you do.",
+          "stats": {
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The past is the past. There's nothing you can do about it now.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "patient_says": "I got a compliment today and spent an hour trying to figure out if they meant it or were just being polite.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "What would it mean for you if they genuinely meant it?",
+          "stats": {
+            "clarity": 2,
+            "hope": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "It sounds like it's hard to accept good things about yourself.",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "They probably meant it. Just say thank you next time.",
+          "stats": {
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What did they say?",
+          "stats": {
+            "trust": 2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "patient_says": "I feel like I need everyone to like me. If even one person doesn't, it ruins everything.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Where do you think that need comes from?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Not everyone will like everyone and that's genuinely okay.",
+          "stats": {
+            "calm": 1,
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Can you think of someone who doesn't like you right now?",
+          "stats": {
+            "clarity": 2,
+            "trust": 1
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You can't control whether people like you.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "patient_says": "I overanalyze my own emotions so much that I'm not sure what I actually feel anymore.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That's a really honest thing to say. What does it feel like right now in this moment?",
+          "stats": {
+            "trust": 3,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "When did you start feeling disconnected from your own emotions?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Try journaling. It might help you sort through things.",
+          "stats": {
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Sometimes feelings don't need to be analyzed, just felt.",
+          "stats": {
+            "calm": 2,
+            "clarity": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "patient_says": "I prepared for every possible outcome of a meeting and then it went completely differently and I just froze.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Freezing when things go off script is tough. What happened after you froze?",
+          "stats": {
+            "trust": 2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "No amount of preparation can cover every outcome. How did you feel about that?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You should practice being more flexible.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would have helped you in that moment?",
+          "stats": {
+            "clarity": 2,
+            "trust": 3,
+            "motivation": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "patient_says": "I talked to someone new today. I thought it went okay but now I'm not sure. What if I came across weird?",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "What made you feel like it went okay at the time?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Hold onto that first feeling. Your gut reaction is usually more accurate.",
+          "stats": {
+            "hope": 2,
+            "calm": 1,
+            "clarity": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "If they thought you were weird they wouldn't have kept talking to you.",
+          "stats": {
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You probably did come across fine. Stop worrying.",
+          "stats": {
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "patient_says": "My mind goes blank when someone asks me a question I didn't prepare for and then I panic.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That blank feeling is your nervous system going into overdrive. Does it happen in specific situations?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "It's okay to say you need a moment to think before answering.",
+          "stats": {
+            "hope": 2,
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "You just need more confidence.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What kind of questions tend to blank you out?",
+          "stats": {
+            "clarity": 2,
+            "trust": 3
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "patient_says": "I stayed up until 2am thinking about whether I should quit my job. I didn't come to any conclusion.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Big decisions are hard. What's making you consider quitting?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Late night thinking rarely leads to good conclusions. How are you feeling today?",
+          "stats": {
+            "trust": 2,
+            "calm": 1,
+            "exhaustion": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You probably shouldn't make big decisions at 2am.",
+          "stats": {
+            "clarity": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would help you feel clearer about this decision?",
+          "stats": {
+            "clarity": 3,
+            "motivation": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "patient_says": "I feel guilty when I'm not being productive. Even resting feels like I'm doing something wrong.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Rest is not the opposite of productivity. They work together. Where do you think that guilt comes from?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What does a restful moment look like for you when you allow yourself one?",
+          "stats": {
+            "trust": 2,
+            "calm": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "You need rest. It's not optional.",
+          "stats": {
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Maybe try to be more productive so resting doesn't feel wasteful.",
+          "stats": {
+            "trust": -3,
+            "exhaustion": 2,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "patient_says": "I asked a question in class today and immediately regretted it. I kept thinking everyone thought it was stupid.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Asking questions takes courage. What made you regret it?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Was there any actual reaction from people or is this what you imagined?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "No question is stupid.",
+          "stats": {
+            "hope": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm glad you asked the question. That's growth.",
+          "stats": {
+            "hope": 2,
+            "trust": 3,
+            "motivation": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "patient_says": "I wrote and deleted the same text message about twenty times. I still haven't sent it.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "What are you trying to say in the message?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What's the worst that happens if you send it?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just send it. Done is better than perfect.",
+          "stats": {
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would you say if you weren't afraid of the response?",
+          "stats": {
+            "clarity": 3,
+            "hope": 1,
+            "trust": 3
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "patient_says": "I think about dying sometimes but not because I want to. More like I wonder what it would be like if I just wasn't here.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Thank you for trusting me with that. Can you tell me more about when those thoughts come?",
+          "stats": {
+            "trust": 4,
+            "loneliness": -2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That kind of thought is worth taking seriously. Do you feel safe right now?",
+          "stats": {
+            "trust": 3,
+            "calm": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "A lot of people feel that way sometimes.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You should talk to someone about that.",
+          "stats": {
+            "trust": -1,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "patient_says": "I convinced myself that my headache was something serious and spent two hours reading about symptoms online.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Health anxiety is really common. Did reading about it make you feel better or worse?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "The internet is not a doctor. What would help you step away from that spiral?",
+          "stats": {
+            "clarity": 3,
+            "hope": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Stop googling symptoms. It always makes things worse.",
+          "stats": {
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How does your head feel now?",
+          "stats": {
+            "trust": 2,
+            "calm": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "patient_says": "I feel bad about things I did in primary school. Like genuinely ashamed.",
+      "emotion": "cry",
+      "choices": [
+        {
+          "text": "Primary school is a long time ago. What keeps bringing those memories up?",
+          "stats": {
+            "trust": 3,
+            "clarity": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The fact that you feel ashamed now says something good about who you've become.",
+          "stats": {
+            "hope": 3,
+            "trust": 2,
+            "clarity": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "Everyone does embarrassing things as a kid. It's normal.",
+          "stats": {
+            "calm": 1,
+            "trust": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What happened?",
+          "stats": {
+            "trust": 2,
+            "clarity": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "patient_says": "I find it hard to enjoy anything because I'm always thinking about what I should be doing instead.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That constant pull between being present and being productive sounds exhausting.",
+          "stats": {
+            "trust": 2,
+            "exhaustion": -1,
+            "calm": 1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "When was the last time you genuinely enjoyed something without guilt?",
+          "stats": {
+            "clarity": 2,
+            "trust": 3
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just allow yourself to enjoy things.",
+          "stats": {
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What's something you used to enjoy before this started?",
+          "stats": {
+            "hope": 2,
+            "trust": 2,
+            "motivation": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "patient_says": "I always feel like I need to explain myself fully or people will misunderstand me.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Do you feel like people have misunderstood you a lot in the past?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Some misunderstanding is unavoidable. What would happen if someone misread you?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "You don't owe everyone a full explanation.",
+          "stats": {
+            "calm": 1,
+            "hope": 1,
+            "trust": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Just say what you mean and move on.",
+          "stats": {
+            "trust": -2,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "patient_says": "I think I'm getting better at noticing when I start to spiral. But stopping it is still really hard.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Noticing it is genuinely the hardest part. That's real progress.",
+          "stats": {
+            "hope": 3,
+            "trust": 2,
+            "motivation": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What does the spiral feel like when it starts?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What have you tried to stop it?",
+          "stats": {
+            "clarity": 2,
+            "trust": 2,
+            "motivation": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "If you can notice it you should be able to stop it.",
+          "stats": {
+            "trust": -2,
+            "hope": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "patient_says": "I keep waiting to feel ready for things but the ready feeling never comes.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Readiness often comes after starting, not before. What's something you've been waiting to feel ready for?",
+          "stats": {
+            "clarity": 2,
+            "hope": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "What does ready feel like to you?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "Just start and figure it out as you go.",
+          "stats": {
+            "trust": -1,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You might never feel fully ready and that's actually okay.",
+          "stats": {
+            "hope": 2,
+            "calm": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "patient_says": "I feel calmer today. I'm not sure why but I wanted to mention it.",
+      "emotion": "smile",
+      "choices": [
+        {
+          "text": "That's worth noticing. What's been different today?",
+          "stats": {
+            "hope": 2,
+            "clarity": 1,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "I'm really glad to hear that.",
+          "stats": {
+            "hope": 2,
+            "trust": 2,
+            "motivation": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "Don't get too used to it. The thoughts might come back.",
+          "stats": {
+            "hope": -3,
+            "calm": -2,
+            "trust": -3
+          },
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "See, you just needed to relax.",
+          "stats": {
+            "trust": -2,
+            "clarity": -1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "patient_says": "I think coming here helps. Even just having somewhere to say this stuff out loud.",
+      "emotion": "smile",
+      "choices": [
+        {
+          "text": "I'm glad this feels like a safe space. That matters.",
+          "stats": {
+            "trust": 3,
+            "hope": 2,
+            "loneliness": -2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "What feels different about saying it out loud versus keeping it in your head?",
+          "stats": {
+            "clarity": 3,
+            "trust": 2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "closeeye"
+        },
+        {
+          "text": "That's what I'm here for.",
+          "stats": {
+            "trust": 1,
+            "hope": 1
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "You should also try talking to people in your life about this.",
+          "stats": {
+            "trust": -1,
+            "loneliness": 1
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "patient_says": "I know I think too much. I just don't know how to stop. Is that something that can actually get better?",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Yes. It takes time and practice but it genuinely does get better.",
+          "stats": {
+            "hope": 3,
+            "trust": 2,
+            "motivation": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "The goal isn't to stop thinking. It's to have a better relationship with your thoughts.",
+          "stats": {
+            "clarity": 3,
+            "hope": 2,
+            "trust": 2
+          },
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "drysmile"
+        },
+        {
+          "text": "It depends on how much effort you put in.",
+          "stats": {
+            "hope": -1,
+            "trust": -2
+          },
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Some people just think more than others.",
+          "stats": {
+            "hope": -1,
+            "clarity": -1,
+            "trust": -1
+          },
+          "patient_emotion_after": "cry",
+          "player_emotion_after": "idle"
+        }
+      ]
+    }
+  ]
+}

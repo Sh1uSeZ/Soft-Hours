@@ -1,0 +1,1246 @@
+{
+  "illness": "trauma",
+  "unique_stat": "stability",
+  "dialogues": [
+    {
+      "id": 1,
+      "patient_says": "I don't really talk about what happened. I've never talked about it with anyone.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "You don't have to talk about it today. We can just start with how things feel right now.",
+          "stats": {"trust": 4, "calm": 2, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Whenever you're ready. There's no rush here.",
+          "stats": {"trust": 3, "calm": 2, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "It might help to finally say it out loud.",
+          "stats": {"trust": -3, "stability": -2, "loneliness": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you decide to come in today?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "patient_says": "I have nightmares almost every night. I'm afraid to sleep sometimes.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That kind of sleep deprivation on top of everything else is exhausting. How long has this been going on?",
+          "stats": {"trust": 3, "stability": 1, "exhaustion": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do the nightmares feel like when you wake up from them?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try listening to something calming before bed.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You're safe here and you're safe when you wake up. Even if it doesn't feel that way.",
+          "stats": {"trust": 3, "calm": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "patient_says": "Something small happened today and I completely shut down. I couldn't move for an hour.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That freeze response is your nervous system trying to protect you. What was the thing that happened?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you okay now?",
+          "stats": {"trust": 2, "calm": 1, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to learn not to let small things affect you like that.",
+          "stats": {"trust": -4, "stability": -3, "loneliness": 3},
+          "patient_emotion_after": "shock",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "An hour of not being able to move sounds really frightening. What brought you back?",
+          "stats": {"trust": 3, "stability": 2, "clarity": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "patient_says": "I flinch at loud noises. Everyone notices and I hate it.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That flinch is your body remembering something before your brain does. It's not weakness.",
+          "stats": {"trust": 3, "stability": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How long have you been doing that?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "People probably don't notice as much as you think.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The embarrassment on top of the flinch sounds really hard. What situations does it happen most in?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "patient_says": "I don't trust people easily. I know that makes things hard but I can't help it.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That distrust usually comes from somewhere real. It makes sense that you protect yourself.",
+          "stats": {"trust": 3, "stability": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You trusted enough to come here. That's something.",
+          "stats": {"trust": 3, "hope": 2, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You need to learn to trust people eventually.",
+          "stats": {"trust": -3, "stability": -2, "loneliness": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm not going to ask you to trust me today. We'll build that slowly.",
+          "stats": {"trust": 4, "calm": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "patient_says": "I feel like I'm always waiting for something bad to happen. Like I can't relax.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That constant vigilance is exhausting to maintain. When did you start feeling like you had to stay on guard?",
+          "stats": {"trust": 3, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Your nervous system learned that being relaxed wasn't safe. We can work on that.",
+          "stats": {"trust": 3, "stability": 2, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Try to do breathing exercises to calm yourself.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does safe feel like to you, even briefly?",
+          "stats": {"trust": 2, "stability": 2, "clarity": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "patient_says": "Someone touched my shoulder without warning and I panicked. I couldn't explain why.",
+      "emotion": "shock",
+      "choices": [
+        {
+          "text": "You don't have to explain why to them or to me. Your body has its reasons. Are you okay?",
+          "stats": {"trust": 4, "calm": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What did you do when it happened?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should tell people you don't like being touched.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Unexpected physical contact can be a real trigger. How long did the panic last?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "patient_says": "I avoid certain streets. Certain places. I plan my whole day around not being near them.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That kind of planning takes so much mental energy. How much of your day does it take up?",
+          "stats": {"trust": 3, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Avoidance keeps you safe short term but slowly shrinks your world. Do you feel that happening?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should try facing those places gradually.",
+          "stats": {"trust": -3, "stability": -2, "loneliness": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Your brain learned those places weren't safe. It's trying to help even if it doesn't feel like it.",
+          "stats": {"trust": 3, "stability": 2, "calm": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "patient_says": "I feel like I split in two sometimes. One part watches the other part just go through the motions.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That splitting feeling is a really common response to trauma. When does it happen most?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does the watching part feel like compared to the one going through the motions?",
+          "stats": {"clarity": 3, "trust": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That sounds disorienting. Try to stay grounded in the present.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Both parts are still you. Even the one that feels like it's watching.",
+          "stats": {"trust": 3, "stability": 2, "calm": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "patient_says": "I went somewhere new today and I was okay. I was really surprised.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That surprise is meaningful. Your nervous system was expecting danger and it didn't come. How did that feel?",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad to hear that.",
+          "stats": {"hope": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "See, you just need to push yourself more.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you decide to go?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "patient_says": "I feel like I can't talk about it because if I do it becomes more real.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That fear makes complete sense. You don't have to make it more real today.",
+          "stats": {"trust": 4, "calm": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would it mean if it became more real?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "It already happened. Talking about it won't change that.",
+          "stats": {"trust": -3, "stability": -3, "loneliness": 2},
+          "patient_emotion_after": "shock",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Talking about it is one path. But there are others. We can go at whatever pace you need.",
+          "stats": {"trust": 3, "stability": 2, "calm": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "patient_says": "I get angry out of nowhere sometimes. Not at anyone specific. Just suddenly full of rage.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Sudden rage is often stored pain looking for an exit. Does it come with any physical feeling?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do you do when it hits?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You need to find better ways to manage your anger.",
+          "stats": {"trust": -3, "stability": -2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Rage that comes from nowhere usually comes from somewhere very specific that hasn't been processed yet.",
+          "stats": {"clarity": 2, "trust": 3, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "patient_says": "I don't like being in rooms with my back to the door.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "That hypervigilance is your body wanting to know what's coming before it arrives. Is that exhausting to maintain?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Do you feel okay in here right now?",
+          "stats": {"trust": 3, "calm": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That's just a habit. Try to get used to different positions.",
+          "stats": {"trust": -3, "stability": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You can move your chair if you'd like. Whatever helps you feel settled.",
+          "stats": {"trust": 4, "calm": 3, "stability": 3},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "patient_says": "People keep telling me to just move on. I don't know how to explain that I can't.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Move on is one of the least helpful things someone can say. You don't have to explain yourself to anyone.",
+          "stats": {"trust": 4, "loneliness": -2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Trauma doesn't work on a timeline. There's no moving on, there's moving with.",
+          "stats": {"trust": 3, "clarity": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "They probably just want to help even if it doesn't land right.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What do you wish people said instead?",
+          "stats": {"trust": 3, "clarity": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "patient_says": "I was doing okay and then a smell triggered something and I lost a whole hour.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Sensory triggers like smell are some of the most powerful because they bypass conscious thought. What happened during that hour?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you back now? Are you okay?",
+          "stats": {"trust": 3, "calm": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try to note what smells trigger you so you can avoid them.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Coming back from something like that takes effort. I'm glad you're here.",
+          "stats": {"trust": 3, "stability": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "patient_says": "I haven't told anyone the full story. Not even the people who were there.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "You don't have to tell the full story here either. You can tell whatever part of it you're ready to.",
+          "stats": {"trust": 4, "calm": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What parts feel most kept in?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Keeping it in is only making it harder.",
+          "stats": {"trust": -3, "stability": -2, "loneliness": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The people who were there might be carrying their own version of it too.",
+          "stats": {"clarity": 2, "trust": 2, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "patient_says": "I startled awake at 3am and couldn't remember where I was for a moment. That happens a lot.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That disorientation on waking is really frightening. What do you do to reorient yourself?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "How long does it take for the feeling to pass?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Try putting something familiar by your bed so you can ground yourself quickly.",
+          "stats": {"hope": 1, "trust": 1, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Those moments of not knowing where you are must be terrifying. You always find your way back though.",
+          "stats": {"trust": 3, "calm": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "patient_says": "I don't feel like myself anymore. I haven't in a long time.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Who were you before? What do you remember of that person?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Parts of you are still there even if they feel buried right now.",
+          "stats": {"hope": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You'll find yourself again eventually.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "When did you last feel like yourself, even briefly?",
+          "stats": {"trust": 2, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "patient_says": "I went to the place today. I didn't go in. But I stood outside for a minute.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Standing outside is enormous. Do not underestimate that.",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How did it feel to be that close?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Next time try going in.",
+          "stats": {"trust": -3, "stability": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What made you decide to go?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "patient_says": "I have a hard time remembering some parts of it. Other parts I can't stop seeing.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That uneven memory is really common with trauma. The brain protects you from some of it while keeping other parts hyper-clear.",
+          "stats": {"trust": 3, "clarity": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What do the parts you can't stop seeing feel like when they come?",
+          "stats": {"trust": 2, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Maybe the parts you can't remember are best left that way.",
+          "stats": {"trust": -2, "stability": -2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You don't have to chase the parts you can't remember. They'll come when you're ready if they need to.",
+          "stats": {"trust": 3, "calm": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "patient_says": "I feel responsible for what happened even though I know logically I'm not.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That gap between knowing and feeling is one of the cruelest parts of trauma. The knowledge doesn't always reach the feeling.",
+          "stats": {"trust": 4, "stability": 2, "loneliness": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does the part that feels responsible say?",
+          "stats": {"clarity": 3, "trust": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You're right, you're not responsible. So try not to feel that way.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You are not responsible. And you're allowed to keep working toward believing that.",
+          "stats": {"trust": 3, "hope": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "patient_says": "I cried today and it felt like it came from somewhere very deep. Not just sad. Like grief.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "That kind of grief cry is the body releasing something it's been holding for a long time.",
+          "stats": {"trust": 3, "stability": 2, "calm": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What were you thinking about when it happened?",
+          "stats": {"trust": 2, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Crying is healthy. Let it out.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That deep grief is real and it deserves to be felt. How do you feel now?",
+          "stats": {"trust": 3, "presence": 1, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "patient_says": "I let someone new into my life recently. It terrifies me but I'm trying.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Letting someone in when trust has been broken takes real courage. How does it feel so far?",
+          "stats": {"hope": 2, "trust": 3, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The terror makes sense. What made you decide to try?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Be careful. Don't rush into trusting people.",
+          "stats": {"trust": -2, "stability": -1, "loneliness": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad you're trying. That's not small.",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "patient_says": "I feel safest at home. But even home doesn't always feel safe anymore.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "When even your safe place stops feeling safe that's a really hard thing to sit with. When did that start?",
+          "stats": {"trust": 3, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What does safe feel like when you do get a moment of it?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You're safe. Nothing is going to happen.",
+          "stats": {"trust": -2, "stability": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Safety is something we can rebuild. Not all at once. But piece by piece.",
+          "stats": {"hope": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "patient_says": "I think about not being here sometimes. Not a plan. Just wishing I wasn't.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Thank you for telling me that. That wish matters even without a plan. Can you tell me more about when it comes?",
+          "stats": {"trust": 5, "loneliness": -3, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Are you safe right now?",
+          "stats": {"trust": 3, "calm": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should really tell someone about that.",
+          "stats": {"trust": -2, "stability": -1, "loneliness": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I hear you. That kind of wishing is its own kind of pain. You're not alone in it right now.",
+          "stats": {"trust": 4, "loneliness": -3, "calm": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "patient_says": "I asked someone to check in on me this week. That's new for me.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Asking for that is huge. What made you do it?",
+          "stats": {"hope": 3, "trust": 2, "stability": 3},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really proud of you for that.",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. You shouldn't go through this alone.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "How did it feel to ask?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "patient_says": "I talked to someone else who went through something similar. It helped more than I expected.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Being truly understood by someone who knows is different from anything else. What did they say that helped?",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Shared experience can be a really powerful thing. How did you find them?",
+          "stats": {"trust": 2, "hope": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Be careful comparing experiences. Everyone heals differently.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad you had that.",
+          "stats": {"hope": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "patient_says": "I keep waiting to feel like it's over. But I don't think it ever fully goes away.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "You're right that it doesn't fully go away. But it does become something you can carry differently. Less heavy.",
+          "stats": {"hope": 2, "trust": 3, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What would over feel like if you could imagine it?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "With time it will get easier.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "The goal doesn't have to be over. It can just be manageable. Does that feel like enough?",
+          "stats": {"trust": 2, "stability": 2, "hope": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "patient_says": "I slept through the night without waking up. First time in months.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "One full night. That is your body starting to feel safe enough to rest. How did you feel waking up?",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm genuinely happy for you. How did today feel after that?",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. You should try to keep that routine.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What do you think was different about last night?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "patient_says": "I want to feel like a normal person again. I miss who I was.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Grieving who you were before is real and it's valid. What do you miss most about that person?",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The person you are now is still you. Shaped differently, but still you.",
+          "stats": {"hope": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Normal isn't something anyone really is.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You can build something new. It won't be exactly who you were. But it can be someone you recognize.",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "patient_says": "I had a good moment today. I felt present. Fully in the moment for a few minutes.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "A few minutes of fully being there. That's real and that's yours.",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What were you doing?",
+          "stats": {"trust": 2, "stability": 2, "clarity": 1},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Hold onto that.",
+          "stats": {"trust": 1, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What did present feel like compared to how things usually feel?",
+          "stats": {"clarity": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "patient_says": "Someone did something kind for me and I couldn't accept it. I kept waiting for the catch.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "Waiting for the catch is how you've been taught to receive things. That makes sense.",
+          "stats": {"trust": 3, "clarity": 2, "stability": 1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "What did they do?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Not everything kind comes with a catch.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Kindness without conditions is something you deserve to learn to receive.",
+          "stats": {"hope": 2, "trust": 3, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "patient_says": "I've been coming here for a while now. I think it's helping even if I can't always feel it.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Sometimes healing is happening underneath before we can feel it on the surface.",
+          "stats": {"hope": 3, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What makes you think it's helping even when you can't feel it?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "If you can't feel it maybe something needs to change.",
+          "stats": {"trust": -2, "stability": -1},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm glad you're still here.",
+          "stats": {"trust": 3, "hope": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "patient_says": "I told a friend a little bit about what happened. Not all of it. But some.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Some is more than none. How did it feel to say even a little of it out loud to someone you know?",
+          "stats": {"hope": 3, "trust": 2, "stability": 3},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "How did they respond?",
+          "stats": {"trust": 2, "clarity": 1, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "You should tell them the rest eventually.",
+          "stats": {"trust": -2, "stability": -2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad you did that. That took trust.",
+          "stats": {"hope": 3, "trust": 3, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "patient_says": "I stopped avoiding the trigger completely. I'm learning to sit near it instead.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Sitting near it instead of running from it is one of the bravest things to learn. What does sitting near it feel like?",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "That shift from avoidance to tolerance is really significant growth.",
+          "stats": {"hope": 3, "trust": 2, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Good. Facing it is the only way through.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What helps you stay when you want to run?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 2},
+          "patient_emotion_after": "concern",
+          "player_emotion_after": "concern"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "patient_says": "I don't wake up dreading the day as much anymore. That's new.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Not dreading the day is a big change. When did you notice it shifting?",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does the morning feel like now instead?",
+          "stats": {"trust": 2, "clarity": 2, "stability": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. You're making progress.",
+          "stats": {"trust": 1, "hope": 1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I'm really glad to hear that. You've worked hard for that shift.",
+          "stats": {"hope": 3, "trust": 3, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "patient_says": "I still have bad days. But they feel less like they're the only thing anymore.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "The bad days being one thing among other things instead of everything is a real shift.",
+          "stats": {"hope": 3, "stability": 3, "trust": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What are some of the other things now?",
+          "stats": {"hope": 2, "trust": 2, "clarity": 2},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "The bad days will keep getting less.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You've come a long way from where we started.",
+          "stats": {"hope": 3, "trust": 3, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "patient_says": "I think I'm starting to trust myself again. My own instincts. My own sense of things.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Trusting yourself again after trauma is one of the deepest healings there is.",
+          "stats": {"hope": 4, "stability": 4, "trust": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "What does that trust feel like when you notice it?",
+          "stats": {"clarity": 2, "trust": 2, "stability": 3},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "concern"
+        },
+        {
+          "text": "Good. Just be careful not to rush it.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "That's yours. You built that.",
+          "stats": {"hope": 3, "trust": 3, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "patient_says": "I don't know what I would have done if I hadn't come here. I really don't.",
+      "emotion": "concern",
+      "choices": [
+        {
+          "text": "I'm glad you came. And I'm glad you kept coming.",
+          "stats": {"trust": 3, "hope": 2, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You came here because some part of you chose to. That part of you is strong.",
+          "stats": {"hope": 3, "trust": 3, "stability": 2},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "There are lots of ways to get help.",
+          "stats": {"trust": -1, "stability": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You would have found your way. But I'm glad this was part of it.",
+          "stats": {"hope": 3, "trust": 3, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "patient_says": "I think I'm going to be okay. Not perfect. But okay.",
+      "emotion": "idle",
+      "choices": [
+        {
+          "text": "Okay is everything. I believe you.",
+          "stats": {"hope": 4, "trust": 3, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "Not perfect but okay is a beautiful thing to be able to say.",
+          "stats": {"hope": 4, "trust": 3, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "You'll get to more than okay eventually.",
+          "stats": {"trust": -1, "hope": -1},
+          "patient_emotion_after": "idle",
+          "player_emotion_after": "idle"
+        },
+        {
+          "text": "I think so too.",
+          "stats": {"hope": 4, "trust": 4, "stability": 3},
+          "patient_emotion_after": "smile",
+          "player_emotion_after": "idle"
+        }
+      ]
+    }
+  ]
+}
