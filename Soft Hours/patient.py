@@ -1,10 +1,7 @@
 import random
 import json
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Stat constants
-# ─────────────────────────────────────────────────────────────────────────────
 STAT_MAX     = 100
 STAT_MIN     = 0
 WARN_LOW     = 20   # warning threshold (too low)
@@ -13,10 +10,7 @@ STAT_START   = 50   # default starting value for all stats
 STAT_SCALE   = 5    # multiplier applied to all JSON stat deltas for bigger impact
               # e.g. JSON "+2" becomes +10 in-game; JSON "-3" becomes -15
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Base Patient class
-# ─────────────────────────────────────────────────────────────────────────────
 class Patient:
     """
     Abstract base class for all patients.
@@ -62,8 +56,6 @@ class Patient:
 
         self._load_dialogue()
 
-    # ── Dialogue loading ──────────────────────────────────────────────────────
-
     def _load_dialogue(self):
         path = f"Soft Hours/data/dialogue/{self.illness}.json"
         try:
@@ -93,8 +85,6 @@ class Patient:
         chosen = random.choice(available)
         self.used_ids.add(chosen["id"])
         return chosen
-
-    # ── Stat management ───────────────────────────────────────────────────────
 
     def update_stat(self, stat_name, delta):
         """
@@ -127,7 +117,6 @@ class Patient:
         self.turn += 1
 
     def _resolve_stat_key(self, name):
-        """Match a stat name case-insensitively."""
         name_lower = name.lower()
         for key in self.stats:
             if key.lower() == name_lower:
@@ -172,8 +161,6 @@ class Patient:
 
         return False
 
-    # ── Emotion ───────────────────────────────────────────────────────────────
-
     def set_emotion(self, emotion):
         """
         Set current emotion for sprite display.
@@ -186,10 +173,7 @@ class Patient:
             self.emotion = "idle"
 
     def get_sprite_name(self):
-        """Returns the sprite filename key e.g. 'blue_idle'"""
         return f"{self.sprite_color}_{self.emotion}"
-
-    # ── Session outcome ───────────────────────────────────────────────────────
 
     def on_stat_fail(self):
         """
@@ -202,7 +186,6 @@ class Patient:
         return "walk_away"
 
     def get_summary(self):
-        """Return a dict summary of the patient for data logging."""
         return {
             "name":       self.name,
             "age":        self.age,
@@ -217,10 +200,7 @@ class Patient:
                 f"name={self.name!r} illness={self.illness!r} "
                 f"turn={self.turn}>")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Subclasses
-# ─────────────────────────────────────────────────────────────────────────────
 
 class OverthinkingPatient(Patient):
     illness      = "overthinking"
@@ -231,7 +211,6 @@ class OverthinkingPatient(Patient):
         # Spirals and walks away mid session
         return "walk_away"
 
-
 class AngerPatient(Patient):
     illness      = "anger"
     unique_stat  = "control"
@@ -240,7 +219,6 @@ class AngerPatient(Patient):
     def on_stat_fail(self):
         # Becomes aggressive — instant game over
         return "game_over"
-
 
 class DepressionPatient(Patient):
     illness      = "depression"
@@ -251,7 +229,6 @@ class DepressionPatient(Patient):
         # Goes silent and walks away
         return "walk_away"
 
-
 class TraumaPatient(Patient):
     illness      = "trauma"
     unique_stat  = "stability"
@@ -260,7 +237,6 @@ class TraumaPatient(Patient):
     def on_stat_fail(self):
         # Shuts down and flees
         return "walk_away"
-
 
 class BurnoutPatient(Patient):
     illness      = "burnout"
@@ -271,10 +247,7 @@ class BurnoutPatient(Patient):
         # Collapses and becomes unresponsive
         return "walk_away"
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Patient factory — random patient generator
-# ─────────────────────────────────────────────────────────────────────────────
 
 PATIENT_CLASSES = [
     OverthinkingPatient,
@@ -284,7 +257,6 @@ PATIENT_CLASSES = [
     BurnoutPatient,
 ]
 
-
 def load_random_info():
     """Load the random_info.json pool."""
     try:
@@ -293,7 +265,6 @@ def load_random_info():
     except FileNotFoundError:
         print("[PatientFactory] random_info.json not found.")
         return None
-
 
 def create_random_patient(info_pool=None):
     """

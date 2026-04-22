@@ -3,12 +3,9 @@ import os
 import time
 import uuid
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # CSV file path — anchored to THIS file's directory so the save folder is
 # always created inside the Soft Hours project regardless of where the user
 # launches the game from.
-# ─────────────────────────────────────────────────────────────────────────────
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 LOG_PATH = os.path.join(_HERE, "data", "saves", "session_log.csv")
 
@@ -35,10 +32,7 @@ COLUMNS = [
     "session_score",
 ]
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # DataLogger
-# ─────────────────────────────────────────────────────────────────────────────
 class DataLogger:
     """
     Records every turn interaction and stat snapshot to a CSV file.
@@ -58,17 +52,25 @@ class DataLogger:
 
         self._ensure_file()
 
-    # ── File setup ────────────────────────────────────────────────────────────
-
     def _ensure_file(self):
-        """Create the CSV with headers if it does not exist yet."""
         os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
         if not os.path.exists(LOG_PATH):
             with open(LOG_PATH, "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=COLUMNS)
                 writer.writeheader()
+            return
 
-    # ── Turn logging ──────────────────────────────────────────────────────────
+        # File exists — check if first line is the real header.
+        # If not (old data without header), prepend the header row.
+        with open(LOG_PATH, "r", encoding="utf-8") as f:
+            first = f.readline().strip()
+        if first != ",".join(COLUMNS):
+            with open(LOG_PATH, "r", encoding="utf-8") as f:
+                existing = f.read()
+            with open(LOG_PATH, "w", newline="", encoding="utf-8") as f:
+                f.write(",".join(COLUMNS) + "\n")
+                f.write(existing)
+            print(f"[DataLogger] Prepended missing header to {LOG_PATH}")
 
     def log_turn(self, patient, choice_result, emotional_state):
         """
@@ -107,8 +109,6 @@ class DataLogger:
 
         self.turn_rows.append(row)
 
-    # ── Session end ───────────────────────────────────────────────────────────
-
     def log_session_end(self, outcome, score):
         """
         Finalise all rows with real outcome/score and write to CSV.
@@ -126,20 +126,15 @@ class DataLogger:
               f"\n  → {LOG_PATH}")
 
     def _write_rows(self):
-        """Append all buffered rows to the CSV file."""
         with open(LOG_PATH, "a", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=COLUMNS)
             for row in self.turn_rows:
                 writer.writerow(row)
 
-    # ── New session ───────────────────────────────────────────────────────────
-
     def new_session(self):
         """Reset logger for a new patient session within the same game run."""
         self.turn_rows    = []
         self.session_done = False
-
-    # ── Export ────────────────────────────────────────────────────────────────
 
     def export_csv(self, path=None):
         """Write current buffered rows to a specific path (mid-session snapshot)."""
@@ -149,8 +144,6 @@ class DataLogger:
             writer = csv.DictWriter(f, fieldnames=COLUMNS)
             for row in self.turn_rows:
                 writer.writerow(row)
-
-    # ── Score calculator ──────────────────────────────────────────────────────
 
     @staticmethod
     def calculate_score(hearts_lost, warning_count, success):
@@ -165,8 +158,6 @@ class DataLogger:
         score -= hearts_lost   * 5
         score -= warning_count * 2
         return score
-
-    # ── Summary ───────────────────────────────────────────────────────────────
 
     def get_session_summary(self):
         if not self.turn_rows:

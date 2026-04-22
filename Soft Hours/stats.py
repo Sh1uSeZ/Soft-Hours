@@ -1,9 +1,6 @@
 import pygame
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Thresholds
-# ─────────────────────────────────────────────────────────────────────────────
 STAT_MAX   = 100
 STAT_MIN   = 0
 WARN_LOW   = 20   # positive stats warn below this
@@ -14,10 +11,7 @@ CRIT_HIGH  = 100  # critical ceiling
 # Stats that are bad when HIGH (pressure meters)
 PRESSURE_STATS = {"exhaustion", "loneliness"}
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # StatSystem
-# ─────────────────────────────────────────────────────────────────────────────
 class StatSystem:
     """
     Manages reading, updating, and monitoring all stats for a patient.
@@ -31,11 +25,8 @@ class StatSystem:
         self._init_flags()
 
     def _init_flags(self):
-        """Initialise all warning flags to False."""
         for key in self.patient.stats:
             self.warning_flags[key] = False
-
-    # ── Update ────────────────────────────────────────────────────────────────
 
     def update(self, stat_deltas: dict):
         """
@@ -48,8 +39,6 @@ class StatSystem:
             self.patient.update_stat(stat_name, delta)
 
         return self.check_range()
-
-    # ── Range checking ────────────────────────────────────────────────────────
 
     def check_range(self):
         """
@@ -88,10 +77,7 @@ class StatSystem:
         return False
 
     def any_warning_active(self):
-        """Returns True if at least one stat is currently in warning."""
         return any(self.warning_flags.values())
-
-    # ── Warning trigger ───────────────────────────────────────────────────────
 
     def trigger_warning(self, turn_number):
         """
@@ -106,8 +92,6 @@ class StatSystem:
                 "value": self.patient.stats[stat],
             })
         return active
-
-    # ── Snapshot ──────────────────────────────────────────────────────────────
 
     def snapshot(self):
         """
@@ -134,8 +118,6 @@ class StatSystem:
         """Returns total number of warning events recorded this session."""
         return len(self.warning_history)
 
-    # ── Display helper ────────────────────────────────────────────────────────
-
     def get_display_stats(self):
         """
         Returns stats formatted for UI display.
@@ -157,10 +139,7 @@ class StatSystem:
         return (f"<StatSystem patient={self.patient.name!r} "
                 f"warnings={self.get_warning_count()}>")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # draw_stats_panel  —  draws all stat bars using ui.py helpers
-# ─────────────────────────────────────────────────────────────────────────────
 def draw_stats_panel(surface, stat_system, x, y, font,
                      bar_w=160, bar_h=10, gap=36):
     """

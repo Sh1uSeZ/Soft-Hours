@@ -1,19 +1,12 @@
 import pygame
-import json
 import random
 import time
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Text reveal speed (characters per second)
-# ─────────────────────────────────────────────────────────────────────────────
 REVEAL_SPEED = 40
 
-# ─────────────────────────────────────────────────────────────────────────────
 # Maximum turns per session
-# ─────────────────────────────────────────────────────────────────────────────
 MAX_TURNS = 40
-
 
 class DialogueManager:
     """
@@ -48,8 +41,6 @@ class DialogueManager:
 
         self.load_next()
 
-    # ── Loading ───────────────────────────────────────────────────────────────
-
     def load_next(self):
         if self.patient.turn >= MAX_TURNS:
             self.session_done = True
@@ -67,7 +58,6 @@ class DialogueManager:
         self.waiting_choice = False
         self.waiting_click  = False
 
-        # ── Shuffle choices so positional exploits don't work ──
         raw_choices = list(entry.get("choices", []))
         random.shuffle(raw_choices)
         self.choices = raw_choices
@@ -80,7 +70,6 @@ class DialogueManager:
         self.patient.set_emotion(opening_emotion)
 
     def load_dialogue(self, entry):
-        """Manually set a specific dialogue entry (for testing)."""
         self.current_entry  = entry
         self.revealed_chars = 0
         self.reveal_timer   = 0.0
@@ -94,8 +83,6 @@ class DialogueManager:
         self.hovered_choice = -1
         self.turn_start_time = time.time()
         self.patient.set_emotion(entry.get("emotion", "idle"))
-
-    # ── Update ────────────────────────────────────────────────────────────────
 
     def update(self, dt):
         if self.current_entry is None or self.session_done:
@@ -118,8 +105,6 @@ class DialogueManager:
             self.waiting_click  = True
             self.waiting_choice = False
 
-    # ── Text access ───────────────────────────────────────────────────────────
-
     def get_patient_text(self):
         if self.current_entry is None:
             return ""
@@ -130,8 +115,6 @@ class DialogueManager:
 
     def get_choice_texts(self):
         return [c.get("text", "") for c in self.choices]
-
-    # ── Choice handling ───────────────────────────────────────────────────────
 
     def set_choice_rects(self, rects):
         self.choice_rects = rects
@@ -220,8 +203,6 @@ class DialogueManager:
         if not self.choices:
             return None
         return self.apply_choice(random.randint(0, len(self.choices) - 1))
-
-    # ── State checks ──────────────────────────────────────────────────────────
 
     def is_reading_text(self):
         return self.waiting_click and self.text_complete

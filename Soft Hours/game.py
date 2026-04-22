@@ -37,9 +37,9 @@ DARK_RED    = (120, 30,  30)
 GOLD        = (220, 180,  60)
 
 # ── Settings persistence ──────────────────────────────────────────────────────
+# game.py lives at Soft Hours/ root — saves go to Soft Hours/data/saves/
 _HERE         = os.path.dirname(os.path.abspath(__file__))
 SETTINGS_PATH = os.path.join(_HERE, "data", "saves", "settings.json")
-
 
 def load_settings():
     defaults = {"bgm": 0.8, "sfx": 1.0}
@@ -52,7 +52,6 @@ def load_settings():
         pass
     return defaults
 
-
 def save_settings(bgm_vol, sfx_vol):
     os.makedirs(os.path.dirname(SETTINGS_PATH), exist_ok=True)
     try:
@@ -61,10 +60,6 @@ def save_settings(bgm_vol, sfx_vol):
     except Exception as e:
         print(f"[Settings] Could not save: {e}")
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Slider
-# ─────────────────────────────────────────────────────────────────────────────
 class Slider:
     def __init__(self, x, y, w, label, initial=1.0):
         self.x        = x
@@ -107,10 +102,6 @@ class Slider:
         pct = font.render(f"{int(self.value * 100)}%", True, LIGHT_GRAY)
         surface.blit(pct, (self.x + self.w + 12, self.y - pct.get_height() // 2))
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Settings Panel
-# ─────────────────────────────────────────────────────────────────────────────
 class SettingsPanel:
     def __init__(self, screen_w, screen_h, font_small, font_medium, font_large,
                  saved_bgm=0.8, saved_sfx=1.0):
@@ -203,10 +194,6 @@ class SettingsPanel:
             surface.blit(msg, (self.rect.centerx - msg.get_width() // 2,
                                self.rect.centery - msg.get_height() // 2))
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Tutorial pages
-# ─────────────────────────────────────────────────────────────────────────────
 TUTORIAL_PAGES = [
     {
         "guide": "lookplayer",
@@ -260,7 +247,6 @@ TUTORIAL_PAGES = [
     },
 ]
 
-
 class TutorialOverlay:
     """Full-screen tutorial shown after clicking Begin. Blurs menu behind it."""
 
@@ -286,7 +272,6 @@ class TutorialOverlay:
         self.overlay.fill((0, 0, 0, 200))
 
     def handle_event(self, event):
-        """Returns 'done' when tutorial is finished, else None."""
         if not self.visible:
             return "done"
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -313,7 +298,7 @@ class TutorialOverlay:
         guide_key  = page["guide"]
         guide_surf = self.guide_sprites.get(guide_key)
         if guide_surf:
-            gs = pygame.transform.scale(guide_surf, (self.GUIDE_W, self.GUIDE_H))
+            gs = pygame.transform.smoothscale(guide_surf, (self.GUIDE_W, self.GUIDE_H))
             gx = self.panel.right - self.GUIDE_W - 10
             gy = self.panel.y + self.panel.height // 2 - self.GUIDE_H // 2
             surface.blit(gs, (gx, gy))
@@ -358,10 +343,6 @@ class TutorialOverlay:
             surface.blit(t, (btn.centerx - t.get_width()  // 2,
                              btn.centery - t.get_height() // 2))
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Game
-# ─────────────────────────────────────────────────────────────────────────────
 class Game:
     def __init__(self, screen, width, height):
         self.screen  = screen
@@ -399,8 +380,8 @@ class Game:
         # Guide sprites for tutorial
         from utils import get_sprite
         self.guide_sprites = {
-            "lookplayer": get_sprite("guide", "lookplayer", (256, 256)),
-            "lookdemon":  get_sprite("guide", "lookdemon",  (256, 256)),
+            "lookplayer": get_sprite("guide", "lookplayer", None),
+            "lookdemon":  get_sprite("guide", "lookdemon",  None),
         }
 
         self.tutorial = None
@@ -408,7 +389,7 @@ class Game:
 
         self._play_music("menu")
 
-    # ── Loading ───────────────────────────────────────────────────────────────
+  
 
     def _load_fonts(self):
         path = "Soft Hours/assets/fonts/Pencilant Script.ttf"
@@ -481,7 +462,7 @@ class Game:
         except FileNotFoundError:
             print(f"Warning: BGM not found: {path}")
 
-    # ── State ─────────────────────────────────────────────────────────────────
+  
 
     def change_state(self, new_state):
         self.state = new_state
@@ -528,7 +509,7 @@ class Game:
         except Exception as e:
             print(f"[Game] Stats panel error: {e}")
 
-    # ── Events ────────────────────────────────────────────────────────────────
+  
 
     def handle_event(self, event):
         # Tutorial intercepts ALL events while active
@@ -610,7 +591,7 @@ class Game:
         self.logger          = DataLogger()
         self.change_state(STATE_MAIN_MENU)
 
-    # ── Update ────────────────────────────────────────────────────────────────
+  
 
     def update(self, dt):
         if self.state == STATE_SESSION:
@@ -621,7 +602,7 @@ class Game:
                     self._start_session()
             self.shop_ui.update(dt)
 
-    # ── Draw ──────────────────────────────────────────────────────────────────
+  
 
     def draw(self):
         self.screen.fill(WHITE if self.state == STATE_MAIN_MENU else NEAR_BLACK)
@@ -660,7 +641,6 @@ class Game:
         icon_color = BLACK if is_light else WHITE
         box_color  = BLACK if is_light else WHITE
         
-        # Draw box around setting icon
         box = pygame.Rect(self.setting_btn.x - 6, self.setting_btn.y - 6, 
                          self.setting_btn.w + 12, self.setting_btn.h + 12)
         pygame.draw.rect(self.screen, box_color, box, 2, border_radius=6)
@@ -680,7 +660,6 @@ class Game:
                 pygame.draw.line(self.screen, icon_color, (x1, y1), (x2, y2), 2)
 
     def _draw_shop_icon(self):
-        # Draw box around shop icon
         box = pygame.Rect(self.shop_icon_btn.x - 6, self.shop_icon_btn.y - 6,
                          self.shop_icon_btn.w + 12, self.shop_icon_btn.h + 12)
         pygame.draw.rect(self.screen, WHITE, box, 2, border_radius=6)
@@ -754,23 +733,19 @@ class Game:
     def _draw_hearts(self):
         x_start = self.width - 50
         y, radius, gap = 40, 12, 32
-        
-        # Draw background box around all hearts
-        box_left = x_start - (MAX_HEARTS - 1) * gap - radius - 8
-        box_top = y - radius - 8
-        box_width = (MAX_HEARTS - 1) * gap + 2 * radius + 16
+        box_left   = x_start - (MAX_HEARTS - 1) * gap - radius - 8
+        box_top    = y - radius - 8
+        box_width  = (MAX_HEARTS - 1) * gap + 2 * radius + 16
         box_height = 2 * radius + 16
-        pygame.draw.rect(self.screen, WHITE, (box_left, box_top, box_width, box_height), border_radius=8)
-        pygame.draw.rect(self.screen, BLACK, (box_left, box_top, box_width, box_height), 2, border_radius=8)
-        
-        # Draw hearts
+        pygame.draw.rect(self.screen, WHITE,
+                         (box_left, box_top, box_width, box_height), border_radius=8)
+        pygame.draw.rect(self.screen, BLACK,
+                         (box_left, box_top, box_width, box_height), 2, border_radius=8)
         for i in range(MAX_HEARTS):
             x = x_start - i * gap
             if i < self.hearts:
-                # Active heart: dark red with black border
                 pygame.draw.circle(self.screen, DARK_RED, (x, y), radius)
                 pygame.draw.circle(self.screen, BLACK,    (x, y), radius, 2)
             else:
-                # Lost heart: white with black border
-                pygame.draw.circle(self.screen, WHITE, (x, y), radius)
-                pygame.draw.circle(self.screen, BLACK, (x, y), radius, 2)
+                pygame.draw.circle(self.screen, (180, 180, 180), (x, y), radius)
+                pygame.draw.circle(self.screen, BLACK,           (x, y), radius, 2)

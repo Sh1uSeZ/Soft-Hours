@@ -1,7 +1,6 @@
 import pygame
 from utils import get_ui_image, clamp, lerp
 
-
 WHITE      = (255, 255, 255)
 BLACK      = (0,   0,   0)
 NEAR_BLACK = (10,  10,  10)
@@ -9,16 +8,12 @@ DARK_GRAY  = (40,  40,  40)
 MID_GRAY   = (100, 100, 100)
 LIGHT_GRAY = (180, 180, 180)
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Item definitions
 # Each item has an "effect" dict:
 #   {"stat": NAME, "delta": N}          → applied once to patient at session start
 #   {"special": KEY}                    → added to active_effects set
 #   {"turns": KEY, "count": N}          → added to turn_effects dict for N turns
-# ─────────────────────────────────────────────────────────────────────────────
 ITEMS = [
-    # ── Existing favourites (revised descriptions) ────────────────────────────
     {
         "id":          "case_file",
         "name":        "Case File",
@@ -47,7 +42,6 @@ ITEMS = [
         "stock":       3,
     },
 
-    # ── New session boosts ────────────────────────────────────────────────────
     {
         "id":          "calming_tea",
         "name":        "Calming Tea",
@@ -76,7 +70,6 @@ ITEMS = [
         "stock":       2,
     },
 
-    # ── Debuff / utility ──────────────────────────────────────────────────────
     {
         "id":          "cleanser",
         "name":        "Cleanser",
@@ -97,10 +90,7 @@ ITEMS = [
     },
 ]
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Shop
-# ─────────────────────────────────────────────────────────────────────────────
 class Shop:
     def __init__(self):
         self.inventory      = [dict(item) for item in ITEMS]
@@ -108,8 +98,6 @@ class Shop:
         self.active_effects = set()
         # turn_effects: {key: turns_remaining}
         self.turn_effects   = {}
-
-    # ── Economy ───────────────────────────────────────────────────────────────
 
     def earn_coins(self, amount):
         self.coins = max(0, self.coins + amount)
@@ -137,8 +125,6 @@ class Shop:
         print(f"[Shop] Bought {item['name']}. coins={self.coins} stock={item['stock']}")
         return True
 
-    # ── Effect helpers ────────────────────────────────────────────────────────
-
     def has_effect(self, effect_name):
         return effect_name in self.active_effects
 
@@ -150,14 +136,12 @@ class Shop:
         return self.turn_effects.get(key, 0)
 
     def consume_turn_effect(self, key):
-        """Decrement a turn effect by 1. Removes when it hits 0."""
         if key in self.turn_effects:
             self.turn_effects[key] -= 1
             if self.turn_effects[key] <= 0:
                 del self.turn_effects[key]
 
     def reset_session_effects(self):
-        """Clear all session-scoped effects at end of session."""
         session_effects = {"ignore_warning", "slow_drain", "reveal_illness"}
         self.active_effects -= session_effects
         # Turn effects also expire between sessions
@@ -180,10 +164,7 @@ class Shop:
     def get_inventory(self):
         return self.inventory
 
-
-# ─────────────────────────────────────────────────────────────────────────────
 # ShopUI
-# ─────────────────────────────────────────────────────────────────────────────
 class ShopUI:
     ICON_SIZE   = 80
     ICON_GAP    = 14

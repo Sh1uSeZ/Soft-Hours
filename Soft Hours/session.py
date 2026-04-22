@@ -79,10 +79,6 @@ PHASE_QUIZ     = "quiz"
 PHASE_OUTCOME  = "outcome"
 PHASE_DONE     = "done"
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Guide bubble — guide sprite + speech bubble, only shown on warnings 1-3
-# ─────────────────────────────────────────────────────────────────────────────
 GUIDE_LINES = [
     # 1st warning
     "Careful! A stat just hit the danger zone.",
@@ -91,7 +87,6 @@ GUIDE_LINES = [
     # 3rd warning
     "Third warning — this patient is on the edge!",
 ]
-
 
 class GuideBubble:
     """
@@ -112,7 +107,6 @@ class GuideBubble:
         self.state        = "lookdemon"    # sprite face
 
     def trigger(self):
-        """Call when a warning fires. Shows guide if under the limit."""
         if self.appearances >= GUIDE_MAX_APPEARANCES:
             return
         self.appearances  += 1
@@ -129,14 +123,13 @@ class GuideBubble:
                 self.visible = False
 
     def draw(self, surface, fonts):
-        """Always called last so guide renders on top of everything."""
         if not self.visible:
             return
 
         # Guide sprite
         surf = self.sprites.get(self.state, self.sprites.get("lookplayer"))
         if surf:
-            gs = pygame.transform.scale(surf, (GUIDE_SPRITE_W, GUIDE_SPRITE_H))
+            gs = pygame.transform.smoothscale(surf, (GUIDE_SPRITE_W, GUIDE_SPRITE_H))
             surface.blit(gs, (GUIDE_X, GUIDE_Y))
 
         # Speech bubble (above guide sprite, slightly to the left)
@@ -180,10 +173,6 @@ class GuideBubble:
             surface.blit(t, (bx + pad, ty))
             ty += lh
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# IllnessQuiz
-# ─────────────────────────────────────────────────────────────────────────────
 class IllnessQuiz:
     BTN_W, BTN_H = 220, 48
     BTN_GAP      = 12
@@ -258,7 +247,7 @@ class IllnessQuiz:
 
         hint = self.fonts["small"].render(
             f"Correct: +{QUIZ_CORRECT_BONUS} coins     "
-            f"Wrong: −{QUIZ_WRONG_PENALTY} coins + Weakness debuff",
+            f"Wrong: −{QUIZ_WRONG_PENALTY} coins  −1 heart  + Weakness debuff",
             True, MID_GRAY)
         self.screen.blit(hint, (SCREEN_W // 2 - hint.get_width() // 2,
                                  panel_rect.y + 68))
@@ -288,27 +277,13 @@ class IllnessQuiz:
                 f"Correct!  +{QUIZ_CORRECT_BONUS} coins", True, (40, 160, 60))
         elif self.result == "wrong":
             fb = self.fonts["large"].render(
-                f"Wrong!  −{QUIZ_WRONG_PENALTY} coins  +  Weakness", True, WARN_RED)
+                f"Wrong!  −{QUIZ_WRONG_PENALTY} coins  −1 heart  +  Weakness", True, WARN_RED)
         else:
             return
         self.screen.blit(fb, (SCREEN_W // 2 - fb.get_width() // 2,
                                 self.btn_rects[-1].bottom + 14))
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Session
-# ─────────────────────────────────────────────────────────────────────────────
 class Session:
-    """
-    Fixed issues in this version:
-      - _fail_handled flag: _handle_fail() can only fire ONCE per session
-        (prevents multiple heart losses from is_critical() firing every frame)
-      - Guide only appears on warnings 1-3, always drawn at top z-order
-      - Dialogue box + choices use white background / black text
-      - Weakness heart loss = 2 ONLY when weakness_active at time of fail;
-        weakness does NOT stack beyond ×2 per fail event
-      - Choice positions shuffle every turn (done in dialogue.py)
-    """
 
     def __init__(self, screen, fonts, game, shop, data_logger,
                  weakness_active=False):
@@ -344,13 +319,6 @@ class Session:
         self.slow_drain          = self.shop.has_effect("slow_drain")
         self.ignore_next_warning = self.shop.has_effect("ignore_warning")
 
-        # Apply coffee stat boost at session start
-        if self.shop.has_effect("coffee_applied"):
-            pass  # handled at buy time
-        # Apply coffee if bought (stat item)
-        coffee_item = self.shop._get_item("coffee")
-        # (coffee effect is applied by use_stat_item externally if needed)
-
         # Animations
         self.patient_jump = JumpTransform(height=14, duration=0.35)
         self.player_jump  = JumpTransform(height=8,  duration=0.28)
@@ -375,7 +343,7 @@ class Session:
 
         print(f"[Session] Started: {self.patient}  weakness={weakness_active}")
 
-    # ── Sprites ───────────────────────────────────────────────────────────────
+  
 
     def _load_sprites(self):
         color = self.patient.sprite_color
@@ -390,7 +358,7 @@ class Session:
                         "shock", "surprise", "concern", "cry"]
         }
         self.guide_sprites = {
-            s: get_sprite("guide", s, (GUIDE_SPRITE_W, GUIDE_SPRITE_H))
+            s: get_sprite("guide", s, None)
             for s in ["lookdemon", "lookplayer"]
         }
 
@@ -402,7 +370,7 @@ class Session:
         return self.player_sprites.get(self.player_emotion,
                                        self.player_sprites["idle"])
 
-    # ── Update ────────────────────────────────────────────────────────────────
+  
 
     def update(self, dt):
         self.fade.update(dt)
@@ -421,7 +389,7 @@ class Session:
 
         elif self.phase == PHASE_DIALOGUE:
             self.dialogue_mgr.update(dt)
-            # ── Critical stat check — guard so it fires only once ──
+          
             if not self._fail_handled and self.stat_system.is_critical():
                 self._fail_handled = True
                 self._handle_fail()
@@ -436,7 +404,7 @@ class Session:
             if self.outcome_timer.update(dt):
                 self.phase = PHASE_DONE
 
-    # ── Events ────────────────────────────────────────────────────────────────
+  
 
     def handle_event(self, event):
         if self.phase == PHASE_INTRO:
@@ -458,16 +426,21 @@ class Session:
                     self.game.weakness_active = False
                 elif quiz_result == "wrong":
                     self.shop.coins = max(0, self.shop.coins - QUIZ_WRONG_PENALTY)
+                    # Lose 2 hearts if weakness was already active, else 1
+                    hearts_lost = 2 if self.weakness_active else 1
+                    self.game.lose_heart(hearts_lost)
                     self.game.weakness_active = True
 
     def _process_choice_result(self, result):
-        # Weakness: double every negative stat delta (extra hit on bad choices)
+        # Weakness: apply a second hit using the same scaled values already applied.
+        # stat_changes in result has raw JSON values; re-scale them for the second hit.
         if self.weakness_active:
             raw = result.get("stat_changes", {})
             if sum(raw.values()) < 0:
+                from patient import STAT_SCALE
                 for stat, delta in raw.items():
                     if delta < 0:
-                        self.patient.update_stat(stat, delta)  # second hit
+                        self.patient.update_stat(stat, delta * STAT_SCALE)
 
         # Slow drain: halve negative deltas for logging (stats already applied)
         if self.slow_drain:
@@ -515,49 +488,34 @@ class Session:
         self._start_quiz()
 
     def _handle_fail(self):
-        """
-        Called exactly once per session (guarded by _fail_handled flag).
-        Weakness causes ×2 heart loss — this is a flat multiplier per fail event,
-        NOT cumulative. After the fail the weakness flag remains until the
-        player answers the quiz correctly or buys a Cleanser.
-        """
-        consequence = self.patient.on_stat_fail()
+        consequence    = self.patient.on_stat_fail()
         self.patient.set_emotion("idle")
-        warnings = self.stat_system.get_warning_count()
-        score = DataLogger.calculate_score(
+        warnings       = self.stat_system.get_warning_count()
+        score          = DataLogger.calculate_score(
             hearts_lost=5 - self.game.hearts,
             warning_count=warnings, success=False)
-
-        # ×2 hearts lost if weakness is active, else ×1
         hearts_to_lose = 2 if self.weakness_active else 1
+
+        self.logger.log_session_end("walked_away" if consequence != "game_over" else "game_over", score)
+        self.logger.new_session()
+        self.game.lose_heart(hearts_to_lose)
+        self.shop.reset_session_effects()
 
         if consequence == "game_over":
             self.outcome = "game_over"
-            self.logger.log_session_end("game_over", score)
-            self.logger.new_session()
-            self.game.lose_heart(hearts_to_lose)
-            # Only call change_state if still alive
-            if self.game.hearts > 0:
-                self.game.change_state("game_over")
+            self.game.change_state("game_over")
         else:
             self.outcome = "walked_away"
-            self.logger.log_session_end("walked_away", score)
-            self.logger.new_session()
-            self.game.lose_heart(hearts_to_lose)
-            self.shop.reset_session_effects()
-            # Only show quiz if game is still running
             if self.game.hearts > 0:
                 self._start_quiz()
-            # If hearts hit 0 the game_over state was set inside lose_heart
 
-        print(f"[Session] Fail ({consequence}) hearts_lost={hearts_to_lose} "
-              f"remaining={self.game.hearts}")
+        print(f"[Session] Fail: {consequence}, hearts_lost={hearts_to_lose}, remaining={self.game.hearts}")
 
     def _start_quiz(self):
         self.quiz  = IllnessQuiz(self.screen, self.fonts, self.patient.illness)
         self.phase = PHASE_QUIZ
 
-    # ── Draw ──────────────────────────────────────────────────────────────────
+  
 
     def draw(self):
         self.screen.blit(self.bg, (0, 0))
@@ -581,7 +539,7 @@ class Session:
         self.warn_flash.draw(self.screen)
         self.fade.draw(self.screen)
 
-    # ── Draw: Intro ───────────────────────────────────────────────────────────
+  
 
     def _draw_intro(self):
         draw_dim_overlay(self.screen, alpha=120)
@@ -605,7 +563,7 @@ class Session:
         self.screen.blit(hint, (SCREEN_W // 2 - hint.get_width() // 2,
                                  SCREEN_H - 40))
 
-    # ── Draw: Dialogue ────────────────────────────────────────────────────────
+  
 
     def _draw_dialogue(self):
         char_color = self._get_char_color()
@@ -617,7 +575,7 @@ class Session:
         self.screen.blit(self._get_player_sprite(),
                          (PLAYER_X, PLAYER_Y - self.player_jump.offset_y))
 
-        # ── Stats panel ───────────────────────────────────────────────────────
+      
         stat_bar_w = 150
         bar_h, gap = 12, 38
         num_stats  = len(self.stat_system.patient.stats)
@@ -663,7 +621,7 @@ class Session:
             bs = self.fonts["small"].render(f"Empathy {emp}t", True, GOLD)
             self.screen.blit(bs, (px + (pw - bs.get_width()) // 2, badge_y))
 
-        # ── Dialogue box or choices (WHITE background, BLACK text) ────────────
+      
         if not self.dialogue_mgr.is_waiting():
             self._draw_dialogue_box(char_color)
         else:
@@ -672,7 +630,7 @@ class Session:
         if self.warning_label_timer > 0:
             self._draw_warning_label()
 
-        # ── Turn counter ──────────────────────────────────────────────────────
+      
         ts2 = self.fonts["medium"].render(
             f"Turn  {self.patient.turn} / 40", True, WHITE)
         tpx, tpy = 14, 8
@@ -685,7 +643,6 @@ class Session:
         self.screen.blit(ts2, (tbx + tpx, tby + tpy))
 
     def _draw_dialogue_box(self, char_color):
-        """Patient speech box — white background, black text."""
         box_rect = pygame.Rect(DIALOGUE_X, DIALOGUE_Y, DIALOGUE_W, DIALOGUE_H)
 
         # White background, black border
@@ -734,7 +691,6 @@ class Session:
                                  box_rect.bottom - hint.get_height() - 8))
 
     def _draw_choices(self):
-        """Choice buttons — white background, black text, dark hover."""
         texts = self.dialogue_mgr.get_choice_texts()
         if not texts:
             return
