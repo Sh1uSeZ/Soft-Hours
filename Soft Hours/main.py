@@ -6,10 +6,8 @@ def main():
     pygame.init()
     pygame.mixer.init()
 
-    # Internal resolution (draw at this size)
     INTERNAL_W, INTERNAL_H = 1280, 720
 
-    # Create window
     screen = pygame.display.set_mode((INTERNAL_W, INTERNAL_H))
     pygame.display.set_caption("Soft Hours")
 
@@ -19,7 +17,7 @@ def main():
     game = Game(screen, INTERNAL_W, INTERNAL_H)
 
     while True:
-        dt = clock.tick(FPS) / 1000.0  # delta time in seconds
+        dt = clock.tick(FPS) / 1000.0
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

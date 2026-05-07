@@ -8,11 +8,10 @@ DARK_GRAY  = (40,  40,  40)
 MID_GRAY   = (100, 100, 100)
 LIGHT_GRAY = (180, 180, 180)
 
-# Item definitions
-# Each item has an "effect" dict:
-#   {"stat": NAME, "delta": N}          → applied once to patient at session start
-#   {"special": KEY}                    → added to active_effects set
-#   {"turns": KEY, "count": N}          → added to turn_effects dict for N turns
+# effect dict shapes:
+#   {"stat": NAME, "delta": N}       → one-time stat change at session start
+#   {"special": KEY}                 → added to active_effects set
+#   {"turns": KEY, "count": N}       → added to turn_effects for N turns
 ITEMS = [
     {
         "id":          "case_file",
@@ -41,7 +40,6 @@ ITEMS = [
         "icon":        "coffee",
         "stock":       3,
     },
-
     {
         "id":          "calming_tea",
         "name":        "Calming Tea",
@@ -57,7 +55,7 @@ ITEMS = [
         "description": "Turn boost: for the next 10 turns every positive stat gain is doubled.",
         "effect":      {"turns": "empathy_boost", "count": 10},
         "price":       28,
-        "icon":        "stress_ball",   # reuse icon until a custom one exists
+        "icon":        "stress_ball",
         "stock":       2,
     },
     {
@@ -66,17 +64,16 @@ ITEMS = [
         "description": "Turn boost: for the next 15 turns every good choice gives +2 bonus to each positive stat.",
         "effect":      {"turns": "focus_notes", "count": 15},
         "price":       20,
-        "icon":        "case_file",     # reuse icon
+        "icon":        "case_file",
         "stock":       2,
     },
-
     {
         "id":          "cleanser",
         "name":        "Cleanser",
         "description": "Removes the Weakness debuff immediately. Also restores 5 Calm to the patient.",
         "effect":      {"special": "cleanse_weakness"},
         "price":       30,
-        "icon":        "calming_tea",   # reuse icon
+        "icon":        "calming_tea",
         "stock":       2,
     },
     {
@@ -90,14 +87,13 @@ ITEMS = [
     },
 ]
 
-# Shop
+
 class Shop:
     def __init__(self):
         self.inventory      = [dict(item) for item in ITEMS]
         self.coins          = 0
         self.active_effects = set()
-        # turn_effects: {key: turns_remaining}
-        self.turn_effects   = {}
+        self.turn_effects   = {}   # {key: turns_remaining}
 
     def earn_coins(self, amount):
         self.coins = max(0, self.coins + amount)
@@ -132,7 +128,6 @@ class Shop:
         self.active_effects.discard(effect_name)
 
     def get_turn_effect(self, key):
-        """Returns remaining turns for a turn-based effect (0 if inactive)."""
         return self.turn_effects.get(key, 0)
 
     def consume_turn_effect(self, key):
@@ -144,7 +139,6 @@ class Shop:
     def reset_session_effects(self):
         session_effects = {"ignore_warning", "slow_drain", "reveal_illness"}
         self.active_effects -= session_effects
-        # Turn effects also expire between sessions
         self.turn_effects.clear()
 
     def use_stat_item(self, item_id, patient):
@@ -164,7 +158,7 @@ class Shop:
     def get_inventory(self):
         return self.inventory
 
-# ShopUI
+
 class ShopUI:
     ICON_SIZE   = 80
     ICON_GAP    = 14
@@ -245,7 +239,6 @@ class ShopUI:
                     item_id = ITEMS[self.selected_index]["id"]
                     if shop.buy(item_id):
                         game.play_sound("click")
-                        # Immediate special effects
                         if item_id == "extra_heart":
                             from game import MAX_HEARTS
                             game.hearts = min(game.hearts + 1, MAX_HEARTS)
@@ -253,10 +246,8 @@ class ShopUI:
                         elif item_id == "cleanser":
                             game.weakness_active = False
                             shop.consume_effect("cleanse_weakness")
-                            # Also apply the Calm boost to current patient if in session
                             if game.current_session and game.current_session.patient:
                                 game.current_session.patient.update_stat("Calm", 5)
-                        # Turn-based effects: push counts into DialogueManager
                         if game.current_session and game.current_session.dialogue_mgr:
                             dm = game.current_session.dialogue_mgr
                             dm.focus_turns_left   = shop.get_turn_effect("focus_notes")
@@ -275,8 +266,7 @@ class ShopUI:
         new_offset     = lerp(current_offset, target_offset,
                               min(1.0, self.SLIDE_SPEED * dt / self.RIGHT_W))
         self.right_rect.x = self.base_rect.x + self.PANEL_W + int(new_offset)
-        shift = int(new_offset * 0.4)
-        self.panel_rect.x = self.base_rect.x - shift
+        self.panel_rect.x = self.base_rect.x - int(new_offset * 0.4)
         self._build_icon_rects()
 
     def draw(self, surface, shop):
@@ -296,7 +286,6 @@ class ShopUI:
         surface.blit(coins_surf, (self.panel_rect.right - coins_surf.get_width() - 16,
                                    self.panel_rect.y + 18))
 
-        # Active turn effects summary
         te_lines = []
         if shop.get_turn_effect("focus_notes") > 0:
             te_lines.append(f"Focus: {shop.get_turn_effect('focus_notes')} turns")
@@ -363,7 +352,6 @@ class ShopUI:
                          (rect.x + 10, y), (rect.right - 10, y), 1)
         y += 10
 
-        # Wrapped description
         desc_words = item["description"].split()
         line       = ""
         for word in desc_words:

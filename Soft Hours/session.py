@@ -41,11 +41,10 @@ PLAYER_SPRITE_H  = 1024
 PLAYER_X         = -225
 PLAYER_Y         = 50
 
-# Guide drawn at a comfortable size in the bottom-right corner
 GUIDE_SPRITE_W   = 380
 GUIDE_SPRITE_H   = 380
-GUIDE_X          = SCREEN_W - GUIDE_SPRITE_W + 40    # slightly clipped on right edge
-GUIDE_Y          = SCREEN_H - GUIDE_SPRITE_H          # flush with bottom
+GUIDE_X          = SCREEN_W - GUIDE_SPRITE_W + 40
+GUIDE_Y          = SCREEN_H - GUIDE_SPRITE_H
 
 DIALOGUE_X = 360
 DIALOGUE_Y = 420
@@ -55,7 +54,7 @@ DIALOGUE_H = 130
 CHOICE_X   = 640
 CHOICE_Y   = 430
 CHOICE_W   = 580
-CHOICE_H   = 50     # slightly taller for readability
+CHOICE_H   = 50
 CHOICE_GAP = 8
 
 STAT_X = 960
@@ -66,8 +65,7 @@ INFO_Y = 80
 INFO_W = 560
 INFO_H = 200
 
-# How many warnings (per patient session) trigger the guide appearance
-GUIDE_MAX_APPEARANCES = 3
+GUIDE_MAX_APPEARANCES = 3   # guide only appears for the first N warnings per session
 
 ALL_ILLNESSES      = ["overthinking", "anger", "depression", "trauma", "burnout"]
 QUIZ_CORRECT_BONUS = 20
@@ -80,31 +78,23 @@ PHASE_OUTCOME  = "outcome"
 PHASE_DONE     = "done"
 
 GUIDE_LINES = [
-    # 1st warning
     "Careful! A stat just hit the danger zone.",
-    # 2nd warning
     "Another warning! Watch those stats closely.",
-    # 3rd warning
     "Third warning — this patient is on the edge!",
 ]
 
 class GuideBubble:
-    """
-    Draws the guide sprite + a speech bubble at the bottom-right corner.
-    Visible only for GUIDE_MAX_APPEARANCES warnings per session.
-    Always drawn LAST (top z-order) in Session.draw().
-    """
-    BUBBLE_W   = 280
-    BUBBLE_H   = 70
-    DISPLAY_DUR = 4.0   # seconds to show per appearance
+    BUBBLE_W    = 280
+    BUBBLE_H    = 70
+    DISPLAY_DUR = 4.0
 
     def __init__(self, guide_sprites):
-        self.sprites      = guide_sprites   # {"lookplayer": surf, "lookdemon": surf}
+        self.sprites      = guide_sprites
         self.visible      = False
         self.timer        = 0.0
-        self.appearances  = 0              # how many times shown this session
+        self.appearances  = 0
         self.current_line = ""
-        self.state        = "lookdemon"    # sprite face
+        self.state        = "lookdemon"
 
     def trigger(self):
         if self.appearances >= GUIDE_MAX_APPEARANCES:
@@ -126,13 +116,11 @@ class GuideBubble:
         if not self.visible:
             return
 
-        # Guide sprite
         surf = self.sprites.get(self.state, self.sprites.get("lookplayer"))
         if surf:
             gs = pygame.transform.smoothscale(surf, (GUIDE_SPRITE_W, GUIDE_SPRITE_H))
             surface.blit(gs, (GUIDE_X, GUIDE_Y))
 
-        # Speech bubble (above guide sprite, slightly to the left)
         bx = GUIDE_X - self.BUBBLE_W + 40
         by = GUIDE_Y - self.BUBBLE_H - 10
 
@@ -141,7 +129,6 @@ class GuideBubble:
         pygame.draw.rect(surface, WARN_RED, (bx, by, self.BUBBLE_W, self.BUBBLE_H),
                          2, border_radius=10)
 
-        # Tail triangle pointing down-right toward guide
         tail_pts = [
             (bx + self.BUBBLE_W - 30, by + self.BUBBLE_H),
             (bx + self.BUBBLE_W - 10, by + self.BUBBLE_H),
@@ -151,7 +138,6 @@ class GuideBubble:
         pygame.draw.lines(surface, WARN_RED, False,
                           [tail_pts[0], tail_pts[2], tail_pts[1]], 2)
 
-        # Text (word-wrapped inside bubble)
         pad = 10
         words, line = self.current_line.split(), ""
         lines_out = []
@@ -205,7 +191,6 @@ class IllnessQuiz:
             x   = start_x + col * (self.BTN_W + self.BTN_GAP)
             y   = start_y + row * (self.BTN_H + self.BTN_GAP)
             self.btn_rects.append(pygame.Rect(x, y, self.BTN_W, self.BTN_H))
-        # Centre lone 5th button
         if len(self.options) % 2 == 1:
             last = len(self.options) - 1
             row  = last // cols
@@ -296,30 +281,24 @@ class Session:
         self.phase   = PHASE_INTRO
         self.outcome = None
 
-        # Weakness: doubles negative stat hits AND costs 2 hearts on fail
-        self.weakness_active = weakness_active
+        self.weakness_active = weakness_active  # doubles negative hits; costs 2 hearts on fail
+        self._fail_handled   = False            # prevents multiple critical-fail triggers
 
-        # Critical-fail guard — prevents multiple triggers per session
-        self._fail_handled = False
-
-        # Patient + systems
         self._info_pool   = load_random_info()
         self.patient      = create_random_patient(self._info_pool)
         self.stat_system  = StatSystem(self.patient)
         self.dialogue_mgr = DialogueManager(self.patient, self.stat_system)
 
-        # Push any existing turn effects from shop into dialogue manager
+        # Push any existing turn effects from shop into the dialogue manager
         self.dialogue_mgr.focus_turns_left   = shop.get_turn_effect("focus_notes")
-        self.dialogue_mgr.empathy_turns_left  = shop.get_turn_effect("empathy_boost")
+        self.dialogue_mgr.empathy_turns_left = shop.get_turn_effect("empathy_boost")
 
-        # Shop session effects
-        self.illness_revealed    = self.shop.has_effect("reveal_illness")
+        self.illness_revealed = self.shop.has_effect("reveal_illness")
         if self.illness_revealed:
             self.shop.consume_effect("reveal_illness")
         self.slow_drain          = self.shop.has_effect("slow_drain")
         self.ignore_next_warning = self.shop.has_effect("ignore_warning")
 
-        # Animations
         self.patient_jump = JumpTransform(height=14, duration=0.35)
         self.player_jump  = JumpTransform(height=8,  duration=0.28)
         self.warn_flash   = WarningFlash(SCREEN_W, SCREEN_H)
@@ -337,13 +316,10 @@ class Session:
         self.choice_rects        = []
         self.warning_label_timer = 0.0
 
-        # Guide bubble — only shown for first 3 warnings
         self._load_sprites()
         self.guide_bubble = GuideBubble(self.guide_sprites)
 
         print(f"[Session] Started: {self.patient}  weakness={weakness_active}")
-
-  
 
     def _load_sprites(self):
         color = self.patient.sprite_color
@@ -370,8 +346,6 @@ class Session:
         return self.player_sprites.get(self.player_emotion,
                                        self.player_sprites["idle"])
 
-  
-
     def update(self, dt):
         self.fade.update(dt)
         self.warn_flash.update(dt)
@@ -389,7 +363,6 @@ class Session:
 
         elif self.phase == PHASE_DIALOGUE:
             self.dialogue_mgr.update(dt)
-          
             if not self._fail_handled and self.stat_system.is_critical():
                 self._fail_handled = True
                 self._handle_fail()
@@ -403,8 +376,6 @@ class Session:
         elif self.phase == PHASE_OUTCOME:
             if self.outcome_timer.update(dt):
                 self.phase = PHASE_DONE
-
-  
 
     def handle_event(self, event):
         if self.phase == PHASE_INTRO:
@@ -426,28 +397,35 @@ class Session:
                     self.game.weakness_active = False
                 elif quiz_result == "wrong":
                     self.shop.coins = max(0, self.shop.coins - QUIZ_WRONG_PENALTY)
-                    # Lose 2 hearts if weakness was already active, else 1
                     hearts_lost = 2 if self.weakness_active else 1
                     self.game.lose_heart(hearts_lost)
                     self.game.weakness_active = True
 
     def _process_choice_result(self, result):
-        # Weakness: apply a second hit using the same scaled values already applied.
-        # stat_changes in result has raw JSON values; re-scale them for the second hit.
+        from patient import STAT_SCALE
+        raw = result.get("stat_changes", {})
+
+        # Slow drain (Calming Tea): apply_choice() already applied full delta;
+        # restore the over-applied half for each negative change.
+        if self.slow_drain:
+            for stat, delta in raw.items():
+                if delta < 0:
+                    correction = (-delta * STAT_SCALE) // 2
+                    self.patient.update_stat(stat, correction)
+            raw = {s: d // 2 if d < 0 else d for s, d in raw.items()}
+            result["stat_changes"] = raw
+
+        # Weakness: second hit using the (possibly halved) stat changes
         if self.weakness_active:
-            raw = result.get("stat_changes", {})
             if sum(raw.values()) < 0:
-                from patient import STAT_SCALE
                 for stat, delta in raw.items():
                     if delta < 0:
                         self.patient.update_stat(stat, delta * STAT_SCALE)
 
-        # Slow drain: halve negative deltas for logging (stats already applied)
-        if self.slow_drain:
-            result["stat_changes"] = {
-                s: d // 2 if d < 0 else d
-                for s, d in result.get("stat_changes", {}).items()
-            }
+        if self.slow_drain or self.weakness_active:
+            new_warnings = self.stat_system.check_range()
+            result["stats_after"] = self.stat_system.snapshot()
+            result["warning"]     = len(new_warnings) > 0
 
         self.patient_jump.trigger()
         self.player_jump.trigger()
@@ -461,13 +439,12 @@ class Session:
                 self.warn_flash.trigger()
                 self.game.play_sound("warning")
                 self.warning_label_timer = 2.5
-                # Guide appears for first 3 warnings only
                 self.guide_bubble.trigger()
 
         self.logger.log_turn(
-            patient        = self.patient,
-            choice_result  = result,
-            emotional_state= self.patient.emotion,
+            patient         = self.patient,
+            choice_result   = result,
+            emotional_state = self.patient.emotion,
         )
 
         if self.dialogue_mgr.is_done():
@@ -475,7 +452,7 @@ class Session:
 
     def _handle_success(self):
         if self._fail_handled:
-            return   # safety guard
+            return
         self.outcome = "success"
         warnings = self.stat_system.get_warning_count()
         score = DataLogger.calculate_score(
@@ -496,7 +473,8 @@ class Session:
             warning_count=warnings, success=False)
         hearts_to_lose = 2 if self.weakness_active else 1
 
-        self.logger.log_session_end("walked_away" if consequence != "game_over" else "game_over", score)
+        self.logger.log_session_end(
+            "walked_away" if consequence != "game_over" else "game_over", score)
         self.logger.new_session()
         self.game.lose_heart(hearts_to_lose)
         self.shop.reset_session_effects()
@@ -515,8 +493,6 @@ class Session:
         self.quiz  = IllnessQuiz(self.screen, self.fonts, self.patient.illness)
         self.phase = PHASE_QUIZ
 
-  
-
     def draw(self):
         self.screen.blit(self.bg, (0, 0))
 
@@ -524,13 +500,11 @@ class Session:
             self._draw_intro()
         elif self.phase == PHASE_DIALOGUE:
             self._draw_dialogue()
-            # Guide drawn last = top z-order
-            self.guide_bubble.draw(self.screen, self.fonts)
+            self.guide_bubble.draw(self.screen, self.fonts)  # guide is top z-order
         elif self.phase == PHASE_QUIZ:
             self._draw_dialogue()
             if self.quiz:
                 self.quiz.draw()
-            # Guide still on top even during quiz
             self.guide_bubble.draw(self.screen, self.fonts)
         elif self.phase == PHASE_OUTCOME:
             self._draw_dialogue()
@@ -538,8 +512,6 @@ class Session:
 
         self.warn_flash.draw(self.screen)
         self.fade.draw(self.screen)
-
-  
 
     def _draw_intro(self):
         draw_dim_overlay(self.screen, alpha=120)
@@ -563,19 +535,15 @@ class Session:
         self.screen.blit(hint, (SCREEN_W // 2 - hint.get_width() // 2,
                                  SCREEN_H - 40))
 
-  
-
     def _draw_dialogue(self):
         char_color = self._get_char_color()
 
-        # Sprites
         self.screen.blit(self._get_patient_sprite(),
                          (PATIENT_X - PATIENT_SPRITE_W // 2,
                           PATIENT_Y - self.patient_jump.offset_y))
         self.screen.blit(self._get_player_sprite(),
                          (PLAYER_X, PLAYER_Y - self.player_jump.offset_y))
 
-      
         stat_bar_w = 150
         bar_h, gap = 12, 38
         num_stats  = len(self.stat_system.patient.stats)
@@ -604,12 +572,10 @@ class Session:
                          font=self.fonts["small"],
                          bar_w=stat_bar_w, bar_h=bar_h, gap=gap)
 
-        # Weakness badge under stat panel
         if self.weakness_active:
             wb = self.fonts["small"].render("⚠ WEAKNESS", True, WARN_RED)
             self.screen.blit(wb, (px + (pw - wb.get_width()) // 2, py + ph + 6))
 
-        # Turn-boost badges
         foc = self.dialogue_mgr.focus_turns_left
         emp = self.dialogue_mgr.empathy_turns_left
         badge_y = py + ph + (26 if self.weakness_active else 6)
@@ -621,7 +587,6 @@ class Session:
             bs = self.fonts["small"].render(f"Empathy {emp}t", True, GOLD)
             self.screen.blit(bs, (px + (pw - bs.get_width()) // 2, badge_y))
 
-      
         if not self.dialogue_mgr.is_waiting():
             self._draw_dialogue_box(char_color)
         else:
@@ -630,7 +595,6 @@ class Session:
         if self.warning_label_timer > 0:
             self._draw_warning_label()
 
-      
         ts2 = self.fonts["medium"].render(
             f"Turn  {self.patient.turn} / 40", True, WHITE)
         tpx, tpy = 14, 8
@@ -645,20 +609,16 @@ class Session:
     def _draw_dialogue_box(self, char_color):
         box_rect = pygame.Rect(DIALOGUE_X, DIALOGUE_Y, DIALOGUE_W, DIALOGUE_H)
 
-        # White background, black border
         pygame.draw.rect(self.screen, WHITE, box_rect, border_radius=8)
         pygame.draw.rect(self.screen, BLACK, box_rect, 2, border_radius=8)
 
-        # Speaker name in char_color
         name_surf = self.fonts["medium"].render(self.patient.name, True, char_color)
         self.screen.blit(name_surf, (box_rect.x + 16, box_rect.y + 10))
 
-        # Thin divider
         pygame.draw.line(self.screen, LIGHT_GRAY,
                          (box_rect.x + 12, box_rect.y + 38),
                          (box_rect.right - 12, box_rect.y + 38), 1)
 
-        # Dialogue text — BLACK
         text = self.dialogue_mgr.get_revealed_text()
         words, line = text.split(), ""
         lines_out   = []
@@ -680,7 +640,6 @@ class Session:
                              (box_rect.x + 16, ty))
             ty += lh
 
-        # Click hint
         if not self.dialogue_mgr.text_complete:
             hint = self.fonts["small"].render("Click to skip ▶", True, MID_GRAY)
         elif self.dialogue_mgr.is_reading_text():
@@ -702,12 +661,10 @@ class Session:
         for text, rect in zip(texts, self.choice_rects):
             hover = rect.collidepoint(mouse_pos)
             bg    = (220, 220, 220) if hover else WHITE
-            fg    = BLACK
 
             pygame.draw.rect(self.screen, bg,    rect, border_radius=7)
             pygame.draw.rect(self.screen, BLACK, rect, 2, border_radius=7)
 
-            # Word-wrap
             lines, line = [], ""
             for word in text.split():
                 test = line + (" " if line else "") + word
@@ -721,7 +678,7 @@ class Session:
             lh      = self.fonts["small"].get_linesize() + 2
             start_y = rect.centery - len(lines) * lh // 2
             for j, l in enumerate(lines):
-                t = self.fonts["small"].render(l, True, fg)
+                t = self.fonts["small"].render(l, True, BLACK)
                 self.screen.blit(t, (rect.x + 12, start_y + j * lh))
 
     def _draw_warning_label(self):

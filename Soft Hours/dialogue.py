@@ -2,20 +2,10 @@ import pygame
 import random
 import time
 
-# Text reveal speed (characters per second)
 REVEAL_SPEED = 40
-
-# Maximum turns per session
-MAX_TURNS = 40
+MAX_TURNS    = 40
 
 class DialogueManager:
-    """
-    Manages the full dialogue flow for one patient session.
-
-    Key change: choices are shuffled every time a new dialogue entry loads,
-    so no positional pattern (e.g. "choice 3 is always bad") can be exploited.
-    """
-
     def __init__(self, patient, stat_system):
         self.patient     = patient
         self.stat_system = stat_system
@@ -35,9 +25,9 @@ class DialogueManager:
         self.turn_start_time = None
         self.session_done    = False
 
-        # Turn-based shop boost tracking (set externally by Session)
-        self.focus_turns_left    = 0   # each good choice gives +bonus stats
-        self.empathy_turns_left  = 0   # each positive delta is doubled
+        # Set externally by Session after shop purchase
+        self.focus_turns_left   = 0
+        self.empathy_turns_left = 0
 
         self.load_next()
 
@@ -62,12 +52,11 @@ class DialogueManager:
         random.shuffle(raw_choices)
         self.choices = raw_choices
 
-        self.choice_rects   = []
-        self.hovered_choice = -1
+        self.choice_rects    = []
+        self.hovered_choice  = -1
         self.turn_start_time = time.time()
 
-        opening_emotion = entry.get("emotion", "idle")
-        self.patient.set_emotion(opening_emotion)
+        self.patient.set_emotion(entry.get("emotion", "idle"))
 
     def load_dialogue(self, entry):
         self.current_entry  = entry
@@ -78,9 +67,9 @@ class DialogueManager:
         self.waiting_click  = False
         raw_choices = list(entry.get("choices", []))
         random.shuffle(raw_choices)
-        self.choices        = raw_choices
-        self.choice_rects   = []
-        self.hovered_choice = -1
+        self.choices         = raw_choices
+        self.choice_rects    = []
+        self.hovered_choice  = -1
         self.turn_start_time = time.time()
         self.patient.set_emotion(entry.get("emotion", "idle"))
 
@@ -120,12 +109,10 @@ class DialogueManager:
         self.choice_rects = rects
 
     def handle_event(self, event):
-        """
-        Three-stage click flow:
-          1. Text revealing  → click = skip to full reveal
-          2. Text complete, waiting_click → click = show choices
-          3. Choices visible → click a button = apply choice
-        """
+        # Three-stage click flow:
+        #   1. Text revealing  → click skips to full reveal
+        #   2. waiting_click   → click shows choices
+        #   3. waiting_choice  → click on a button applies it
         if event.type == pygame.MOUSEMOTION:
             self.hovered_choice = -1
             for i, rect in enumerate(self.choice_rects):
@@ -157,26 +144,23 @@ class DialogueManager:
         choice     = self.choices[index]
         time_taken = time.time() - (self.turn_start_time or time.time())
 
-        # Apply base stat changes
         self.patient.apply_choice(choice)
 
-        # Apply turn-based shop boosts
         raw_stats = choice.get("stats", {})
 
         if self.focus_turns_left > 0:
             self.focus_turns_left -= 1
-            net = sum(raw_stats.values())
-            if net > 0:
-                # Give a flat +2 bonus to every positive stat this turn
+            if sum(raw_stats.values()) > 0:
                 for stat, delta in raw_stats.items():
                     if delta > 0:
                         self.patient.update_stat(stat, 2)
 
         if self.empathy_turns_left > 0:
             self.empathy_turns_left -= 1
+            from patient import STAT_SCALE
             for stat, delta in raw_stats.items():
                 if delta > 0:
-                    self.patient.update_stat(stat, delta)  # extra equal hit
+                    self.patient.update_stat(stat, delta * STAT_SCALE)
 
         self.player_emotion = choice.get("player_emotion_after", "idle")
 

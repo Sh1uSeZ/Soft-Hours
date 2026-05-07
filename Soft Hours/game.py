@@ -7,7 +7,6 @@ import os
 from shop        import Shop, ShopUI
 from data_logger import DataLogger
 
-# ── Game States ───────────────────────────────────────────────────────────────
 STATE_MAIN_MENU  = "main_menu"
 STATE_TUTORIAL   = "tutorial"
 STATE_SESSION    = "session"
@@ -16,7 +15,6 @@ STATE_GAME_OVER  = "game_over"
 STATE_BAD_ENDING = "bad_ending"
 STATE_STATS      = "stats"
 
-# ── Character border colors ───────────────────────────────────────────────────
 CHAR_COLORS = {
     "blue":   (100, 149, 237),
     "green":  (100, 200, 120),
@@ -36,8 +34,7 @@ LIGHT_GRAY  = (180, 180, 180)
 DARK_RED    = (120, 30,  30)
 GOLD        = (220, 180,  60)
 
-# ── Settings persistence ──────────────────────────────────────────────────────
-# game.py lives at Soft Hours/ root — saves go to Soft Hours/data/saves/
+# Anchored to this file so settings always land in Soft Hours/data/saves/ regardless of CWD
 _HERE         = os.path.dirname(os.path.abspath(__file__))
 SETTINGS_PATH = os.path.join(_HERE, "data", "saves", "settings.json")
 
@@ -248,8 +245,6 @@ TUTORIAL_PAGES = [
 ]
 
 class TutorialOverlay:
-    """Full-screen tutorial shown after clicking Begin. Blurs menu behind it."""
-
     GUIDE_W = 380
     GUIDE_H = 380
 
@@ -294,7 +289,6 @@ class TutorialOverlay:
 
         page = TUTORIAL_PAGES[self.page]
 
-        # Guide sprite (right side)
         guide_key  = page["guide"]
         guide_surf = self.guide_sprites.get(guide_key)
         if guide_surf:
@@ -332,7 +326,7 @@ class TutorialOverlay:
             surface.blit(self.fonts["small"].render(line, True, LIGHT_GRAY),
                          (text_x, text_y))
 
-        is_last   = self.page == len(TUTORIAL_PAGES) - 1
+        is_last    = self.page == len(TUTORIAL_PAGES) - 1
         next_label = "Start!" if is_last else "Next ▶"
         for btn, label in [(self.btn_next, next_label), (self.btn_skip, "Skip")]:
             hover = btn.collidepoint(pygame.mouse.get_pos())
@@ -355,19 +349,17 @@ class Game:
         self.patients_seen   = 0
         self.current_session = None
         self.start_btn       = pygame.Rect(0, 0, 0, 0)
-        self.weakness_active = False   # Weakness debuff — set by illness quiz
+        self.weakness_active = False   # set by illness quiz; persists until cleared
 
         self._load_fonts()
         self._load_sounds()
         self._load_music()
         self._load_ui_assets()
 
-        # Load saved volumes and apply them
         saved = load_settings()
         self.settings = SettingsPanel(self.width, self.height,
                                       self.font_small, self.font_medium, self.font_large,
                                       saved_bgm=saved["bgm"], saved_sfx=saved["sfx"])
-        # Apply saved SFX volume to loaded sounds
         for snd in self.sounds.values():
             if snd:
                 snd.set_volume(saved["sfx"])
@@ -377,7 +369,6 @@ class Game:
                                self.font_small, self.font_medium, self.font_large)
         self.logger   = DataLogger()
 
-        # Guide sprites for tutorial
         from utils import get_sprite
         self.guide_sprites = {
             "lookplayer": get_sprite("guide", "lookplayer", None),
@@ -388,8 +379,6 @@ class Game:
         self.menu_btn = pygame.Rect(0, 0, 0, 0)
 
         self._play_music("menu")
-
-  
 
     def _load_fonts(self):
         path = "Soft Hours/assets/fonts/Pencilant Script.ttf"
@@ -462,8 +451,6 @@ class Game:
         except FileNotFoundError:
             print(f"Warning: BGM not found: {path}")
 
-  
-
     def change_state(self, new_state):
         self.state = new_state
         if new_state == STATE_MAIN_MENU:
@@ -485,34 +472,32 @@ class Game:
             "title":  self.font_title,
         }
         self.current_session = Session(
-            screen      = self.screen,
-            fonts       = fonts,
-            game        = self,
-            shop        = self.shop,
-            data_logger = self.logger,
+            screen          = self.screen,
+            fonts           = fonts,
+            game            = self,
+            shop            = self.shop,
+            data_logger     = self.logger,
             weakness_active = self.weakness_active,
         )
         self.patients_seen += 1
 
     def lose_heart(self, amount=1):
         self.play_sound("heart_lost")
-        self.hearts -= amount
-        self.hearts  = max(0, self.hearts)   # floor at 0, never go negative
+        self.hearts = max(0, self.hearts - amount)
         print(f"[Game] Hearts remaining: {self.hearts}")
         if self.hearts <= 0 and self.state != STATE_GAME_OVER:
             self.change_state(STATE_GAME_OVER)
 
     def open_stats_panel(self):
+        # Dashboard runs in a separate process — Tkinter must be on its own main thread
         try:
             from stats_panel.dashboard import open_dashboard
             open_dashboard()
         except Exception as e:
             print(f"[Game] Stats panel error: {e}")
 
-  
-
     def handle_event(self, event):
-        # Tutorial intercepts ALL events while active
+        # Tutorial intercepts ALL events while active so nothing bleeds through
         if self.state == STATE_TUTORIAL and self.tutorial:
             result = self.tutorial.handle_event(event)
             if result == "done":
@@ -527,7 +512,6 @@ class Game:
                 self.play_sound("click")
                 self.settings.toggle()
                 return
-            # Return-to-menu button (in-session)
             if self.state == STATE_SESSION and self.menu_btn.collidepoint(event.pos):
                 self.play_sound("click")
                 self.change_state(STATE_MAIN_MENU)
@@ -558,24 +542,20 @@ class Game:
         self.state = STATE_TUTORIAL
 
     def _handle_session(self, event):
-        # Shop UI
         if self.shop_ui.handle_event(event, self.shop, self):
             return
-        # Shop icon
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.shop_icon_btn.collidepoint(event.pos):
                 self.play_sound("click")
                 self.shop_ui.toggle()
                 return
-        # Session
         if self.current_session:
             self.current_session.handle_event(event)
 
     def _handle_gameover(self, event):
         if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
             self._full_reset()
-        # Only reset on click if the user is actually ON the game-over screen
-        # (not just a click that happened to propagate from the quiz)
+        # Guard against clicks that propagate from the quiz phase into game-over
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.state == STATE_GAME_OVER:
                 self._full_reset()
@@ -591,8 +571,6 @@ class Game:
         self.logger          = DataLogger()
         self.change_state(STATE_MAIN_MENU)
 
-  
-
     def update(self, dt):
         if self.state == STATE_SESSION:
             if self.current_session:
@@ -601,8 +579,6 @@ class Game:
                     self.current_session = None
                     self._start_session()
             self.shop_ui.update(dt)
-
-  
 
     def draw(self):
         self.screen.fill(WHITE if self.state == STATE_MAIN_MENU else NEAR_BLACK)
@@ -640,11 +616,11 @@ class Game:
         is_light   = self.state == STATE_MAIN_MENU
         icon_color = BLACK if is_light else WHITE
         box_color  = BLACK if is_light else WHITE
-        
-        box = pygame.Rect(self.setting_btn.x - 6, self.setting_btn.y - 6, 
+
+        box = pygame.Rect(self.setting_btn.x - 6, self.setting_btn.y - 6,
                          self.setting_btn.w + 12, self.setting_btn.h + 12)
         pygame.draw.rect(self.screen, box_color, box, 2, border_radius=6)
-        
+
         if self.setting_icon:
             self.screen.blit(self.setting_icon, self.setting_btn.topleft)
         else:
@@ -663,7 +639,7 @@ class Game:
         box = pygame.Rect(self.shop_icon_btn.x - 6, self.shop_icon_btn.y - 6,
                          self.shop_icon_btn.w + 12, self.shop_icon_btn.h + 12)
         pygame.draw.rect(self.screen, WHITE, box, 2, border_radius=6)
-        
+
         if self.shop_icon:
             self.screen.blit(self.shop_icon, self.shop_icon_btn.topleft)
         else:
@@ -676,7 +652,6 @@ class Game:
                              (cx + 6, cy - 10), (cx + 6, cy - 16), 2)
 
     def _draw_menu_btn(self):
-        """Return-to-menu button shown during a session (below shop icon)."""
         btn_w, btn_h = 110, 30
         bx = self.shop_icon_btn.x - 6
         by = self.shop_icon_btn.bottom + 12
@@ -690,7 +665,6 @@ class Game:
                               self.menu_btn.centery - t.get_height() // 2))
 
     def _draw_weakness_indicator(self):
-        """Red badge in top-centre warning player that Weakness is active."""
         surf = self.font_small.render("⚠ WEAKNESS ACTIVE", True, (220, 60, 60))
         bx   = self.width // 2 - surf.get_width() // 2 - 10
         by   = 10

@@ -12,20 +12,20 @@ try:
 except ImportError:
     PANDAS_OK = False
 
-# dashboard.py lives inside stats_panel/ → go up once to reach Soft Hours/ root.
+# dashboard.py is inside stats_panel/ — go up once to reach Soft Hours/ root
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 _ROOT    = os.path.dirname(_HERE)
 LOG_PATH = os.path.join(_ROOT, "data", "saves", "session_log.csv")
 
-BG       = "#ffffff"
-PANEL    = "#f5f5f5"
-BORDER   = "#cccccc"
-FG       = "#111111"
-FG_DIM   = "#555555"
-ACCENT   = "#222222"
-DANGER   = "#cc3333"
-SUCCESS  = "#228833"
-WARN_BG  = "#fff3cd"
+BG      = "#ffffff"
+PANEL   = "#f5f5f5"
+BORDER  = "#cccccc"
+FG      = "#111111"
+FG_DIM  = "#555555"
+ACCENT  = "#222222"
+DANGER  = "#cc3333"
+SUCCESS = "#228833"
+WARN_BG = "#fff3cd"
 
 
 def load_data():
@@ -45,8 +45,6 @@ def load_data():
         if df.empty:
             return None
 
-        # Detect headerless CSV: if first column name is not 'session_id'
-        # the old data was written without a header row so row-0 became headers.
         expected_cols = [
             "session_id", "turn_number", "patient_name", "patient_illness",
             "patient_occupation", "emotional_state", "choice_made",
@@ -54,6 +52,7 @@ def load_data():
             "stat_exhaustion", "stat_loneliness", "stat_unique", "stat_unique_name",
             "warning_triggered", "time_per_turn", "session_outcome", "session_score",
         ]
+        # Headerless CSV: first column name will not be 'session_id'
         if df.columns[0] != "session_id":
             print("[Dashboard] No header detected — re-reading with forced column names.")
             df = pd.read_csv(found, header=None, names=expected_cols)
@@ -98,7 +97,6 @@ class Dashboard:
         self._build_ui()
 
     def _build_ui(self):
-        # Top bar
         top = tk.Frame(self.root, bg=BG, pady=8)
         top.pack(fill="x", padx=20)
         tk.Label(top, text="Soft Hours", bg=BG, fg=FG,
@@ -113,7 +111,6 @@ class Dashboard:
 
         tk.Frame(self.root, bg=BORDER, height=1).pack(fill="x", padx=20, pady=(0, 6))
 
-        # Always build tabs — each tab handles its own missing-data state.
         style = ttk.Style()
         style.theme_use("clam")
         style.configure("TNotebook",     background=BG, borderwidth=0)
@@ -150,8 +147,6 @@ class Dashboard:
             except Exception as e:
                 _no_data_label(frame, f"Error building tab: {e}")
 
-    # ── Summary ───────────────────────────────────────────────────────────────
-
     def _tab_summary(self, parent):
         df = self.df
         if df is None:
@@ -168,13 +163,13 @@ class Dashboard:
             outcomes = valid["session_outcome"].value_counts().to_dict()
 
         rows = [
-            ("Total Rows Logged",     str(total_turns)),
-            ("Sessions",              str(total_sessions)),
-            ("Total Warnings",        str(total_warnings)),
-            ("Avg Time Per Turn",     f"{avg_time}s"),
-            ("Successful Sessions",   str(outcomes.get("success", 0))),
-            ("Walked Away",           str(outcomes.get("walked_away", 0))),
-            ("Game Overs",            str(outcomes.get("game_over", 0))),
+            ("Total Rows Logged",   str(total_turns)),
+            ("Sessions",            str(total_sessions)),
+            ("Total Warnings",      str(total_warnings)),
+            ("Avg Time Per Turn",   f"{avg_time}s"),
+            ("Successful Sessions", str(outcomes.get("success", 0))),
+            ("Walked Away",         str(outcomes.get("walked_away", 0))),
+            ("Game Overs",          str(outcomes.get("game_over", 0))),
         ]
         if "patient_illness" in df.columns:
             rows.append(("Most Seen Illness",
@@ -192,8 +187,6 @@ class Dashboard:
             tk.Label(frame, text=val, bg=BG, fg=FG,
                      font=("Arial", 11, "bold"), width=20, anchor="w").grid(
                          row=i, column=1, sticky="w", pady=4)
-
-    # ── Stat Trends ───────────────────────────────────────────────────────────
 
     def _tab_stat_trends(self, parent):
         df = self.df
@@ -233,8 +226,6 @@ class Dashboard:
         fig.tight_layout()
         self._embed(fig, parent)
 
-    # ── Warnings ──────────────────────────────────────────────────────────────
-
     def _tab_warnings(self, parent):
         df = self.df
         if df is None:
@@ -242,8 +233,8 @@ class Dashboard:
         if not PANDAS_OK:
             _no_data_label(parent, "Install pandas & matplotlib to see charts."); return
 
-        stat_cols = ["stat_hope", "stat_calm", "stat_trust",
-                     "stat_motivation", "stat_exhaustion", "stat_loneliness", "stat_unique"]
+        stat_cols   = ["stat_hope", "stat_calm", "stat_trust",
+                       "stat_motivation", "stat_exhaustion", "stat_loneliness", "stat_unique"]
         warn_counts = {}
         for col in [c for c in stat_cols if c in df.columns]:
             lbl = col.replace("stat_", "").capitalize()
@@ -267,8 +258,6 @@ class Dashboard:
         ax.set_xlabel("Stat"); ax.set_ylabel("Count")
         fig.tight_layout()
         self._embed(fig, parent)
-
-    # ── Decision Time ─────────────────────────────────────────────────────────
 
     def _tab_time(self, parent):
         df = self.df
@@ -297,8 +286,6 @@ class Dashboard:
         ax.tick_params(axis="x", labelrotation=15)
         fig.tight_layout()
         self._embed(fig, parent)
-
-    # ── Outcomes ──────────────────────────────────────────────────────────────
 
     def _tab_outcomes(self, parent):
         df = self.df
@@ -342,8 +329,6 @@ class Dashboard:
         fig.tight_layout()
         self._embed(fig, parent)
 
-    # ── Score Trend ───────────────────────────────────────────────────────────
-
     def _tab_score(self, parent):
         df = self.df
         if df is None:
@@ -374,8 +359,6 @@ class Dashboard:
         ax.set_xlabel("Session"); ax.set_ylabel("Score")
         fig.tight_layout()
         self._embed(fig, parent)
-
-    # ── Data Log ──────────────────────────────────────────────────────────────
 
     def _tab_data_log(self, parent):
         df = self.df
@@ -443,8 +426,6 @@ class Dashboard:
                      text=f"Showing last 500 of {total} rows.",
                      bg=BG, fg=FG_DIM, font=("Arial", 8)).pack(pady=(0, 4))
 
-    # ── Embed figure ──────────────────────────────────────────────────────────
-
     def _embed(self, fig, parent):
         fig.patch.set_facecolor(BG)
         canvas = FigureCanvasTkAgg(fig, master=parent)
@@ -467,6 +448,8 @@ def _dashboard_process():
 
 
 def open_dashboard():
+    # Tkinter must run on the main thread of its own process;
+    # spawn (not fork) avoids inheriting pygame's SDL state on Windows
     import multiprocessing
     ctx = multiprocessing.get_context("spawn")
     ctx.Process(target=_dashboard_process, daemon=True).start()

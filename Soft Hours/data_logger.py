@@ -3,13 +3,10 @@ import os
 import time
 import uuid
 
-# CSV file path — anchored to THIS file's directory so the save folder is
-# always created inside the Soft Hours project regardless of where the user
-# launches the game from.
+# Anchored to this file so saves always land in Soft Hours/data/saves/ regardless of CWD
 _HERE    = os.path.dirname(os.path.abspath(__file__))
 LOG_PATH = os.path.join(_HERE, "data", "saves", "session_log.csv")
 
-# CSV columns in order
 COLUMNS = [
     "session_id",
     "turn_number",
@@ -32,36 +29,22 @@ COLUMNS = [
     "session_score",
 ]
 
-# DataLogger
+
 class DataLogger:
-    """
-    Records every turn interaction and stat snapshot to a CSV file.
-    Uses append mode so multiple runs accumulate in the same file.
-    Session Outcome and Session Score are written as PENDING each turn
-    and updated to final values when the session closes.
-
-    Save location: <project_root>/data/saves/session_log.csv
-    The path is resolved relative to data_logger.py itself, not the
-    current working directory, so it always lands in the right place.
-    """
-
     def __init__(self):
         self.session_id   = str(uuid.uuid4())[:8]
         self.turn_rows    = []
         self.session_done = False
-
         self._ensure_file()
 
     def _ensure_file(self):
         os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
         if not os.path.exists(LOG_PATH):
             with open(LOG_PATH, "w", newline="", encoding="utf-8") as f:
-                writer = csv.DictWriter(f, fieldnames=COLUMNS)
-                writer.writeheader()
+                csv.DictWriter(f, fieldnames=COLUMNS).writeheader()
             return
 
-        # File exists — check if first line is the real header.
-        # If not (old data without header), prepend the header row.
+        # Prepend header if old CSV was written without one
         with open(LOG_PATH, "r", encoding="utf-8") as f:
             first = f.readline().strip()
         if first != ",".join(COLUMNS):
@@ -73,12 +56,6 @@ class DataLogger:
             print(f"[DataLogger] Prepended missing header to {LOG_PATH}")
 
     def log_turn(self, patient, choice_result, emotional_state):
-        """
-        Record one turn row.
-        patient        — Patient instance
-        choice_result  — dict returned by DialogueManager.apply_choice()
-        emotional_state — patient's emotion string at time of choice
-        """
         if self.session_done:
             return
 
@@ -106,19 +83,12 @@ class DataLogger:
             "session_outcome":    "PENDING",
             "session_score":      "PENDING",
         }
-
         self.turn_rows.append(row)
 
     def log_session_end(self, outcome, score):
-        """
-        Finalise all rows with real outcome/score and write to CSV.
-        outcome — "success" | "walked_away" | "game_over"
-        score   — integer session score
-        """
         for row in self.turn_rows:
             row["session_outcome"] = outcome
             row["session_score"]   = score
-
         self._write_rows()
         self.session_done = True
         print(f"[DataLogger] Session {self.session_id} logged "
@@ -132,12 +102,11 @@ class DataLogger:
                 writer.writerow(row)
 
     def new_session(self):
-        """Reset logger for a new patient session within the same game run."""
+        self.session_id   = str(uuid.uuid4())[:8]
         self.turn_rows    = []
         self.session_done = False
 
     def export_csv(self, path=None):
-        """Write current buffered rows to a specific path (mid-session snapshot)."""
         target = path or LOG_PATH
         os.makedirs(os.path.dirname(target), exist_ok=True)
         with open(target, "a", newline="", encoding="utf-8") as f:
@@ -147,14 +116,7 @@ class DataLogger:
 
     @staticmethod
     def calculate_score(hearts_lost, warning_count, success):
-        """
-        +10 for a successful session
-        −5  per heart lost
-        −2  per warning triggered
-        """
-        score = 0
-        if success:
-            score += 10
+        score = 10 if success else 0
         score -= hearts_lost   * 5
         score -= warning_count * 2
         return score
