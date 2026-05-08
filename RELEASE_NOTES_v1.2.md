@@ -23,7 +23,6 @@ This is the final submission build. v1.2 is mostly a cleanup and polish pass on 
 
 - Rewrote `README.md` to follow the course rubric (project description, install, run, tutorial, features, known bugs, sources).
 - Added `DESCRIPTION.md` covering all 7 required sections — overview, concept, UML, OOP implementation, statistical data, changed proposed features, external sources.
-- Added `UML.md` (Mermaid source) alongside the official `UML.pdf` so the diagram is editable later.
 - Added `screenshots/visualization/VISUALIZATION.md` documenting all 7 dashboard tabs with screenshots and a statistical-measures table.
 - Added project-root `LICENSE` (MIT) and `requirements.txt`.
 
