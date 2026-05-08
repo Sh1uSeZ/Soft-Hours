@@ -9,6 +9,8 @@ Soft Hours is a turn-based visual novel made with **Python 3** and **Pygame**. Y
 
 For the full breakdown of the OOP design, the UML diagram, and how the data is collected and visualized, see [DESCRIPTION.md](DESCRIPTION.md).
 
+For a tour of the statistics dashboard tab-by-tab (with screenshots and the statistical measures used), see [VISUALIZATION.md](screenshots/visualization/VISUALIZATION.md).
+
 ---
 
 ## Installation
